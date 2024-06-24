@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var selection: Int = 1
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selection) {
+            Text("1")
+                .tabItem {
+                    Image(systemName: "menucard")
+                    Text("メニュー")
+                }
+                .tag(0)
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("マップ")
+                }
+                .tag(1)
+            Text("1")
+                .tabItem {
+                    Image(systemName: "list.number")
+                    Text("ランキング")
+                }
+                .tag(2)
+            Text("1")
+                .tabItem {
+                    Image(systemName: "chart.xyaxis.line")
+                    Text("グラフ")
+                }
+                .tag(3)
         }
-        .padding()
+        .accentColor(.blue)
     }
 }
 
