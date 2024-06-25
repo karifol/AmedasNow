@@ -10,6 +10,13 @@ import MapKit
 
 struct MapView: View {
     
+    // 地点テーブル
+    var amedasTableDataList = AmedasTableData()
+    @State private var amedasTableData: AmedasTableItem? = nil
+    init(){
+        amedasTableDataList.serchAmedasTable()
+    }
+    
     // 気温のpicker
     @State private var selectedElement = "temp"
     private let elementList = [["風速", "wind"], ["気温", "temp"], ["降水量", "prec1h"]]
@@ -18,7 +25,25 @@ struct MapView: View {
         VStack (alignment: .leading, spacing: 0){
             HeaderView
             ZStack {
-                Map()
+                Map(){
+                    ForEach(amedasTableDataList.amedasList) { amedas in
+                        let targetCoordinate = CLLocationCoordinate2D(
+                            latitude: amedas.lat,
+                            longitude: amedas.lon
+                        )
+                        if (amedas.type == "A") {
+                            Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
+                                VStack {
+                                    Circle()
+                                        .fill(Color.blue)
+                                        .frame(width: 10, height: 10)
+                                }
+                                .padding()
+                                .foregroundColor(.blue)
+                            }
+                        }
+                    }
+                }
                 VStack(alignment: .leading){
                     // picker
                     ElementPickerView
