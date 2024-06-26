@@ -13,8 +13,14 @@ struct MapView: View {
     // 地点テーブル
     var amedasTableDataList = AmedasTableData()
     @State private var amedasTableData: AmedasTableItem? = nil
+    
+    // 最新時刻
+    var latestTimeData = LatestTimeData()
+    @State private var latestTime: String = ""
+    
     init(){
         amedasTableDataList.serchAmedasTable()
+        latestTimeData.serchLatestTime()
     }
     
     // 気温のpicker
@@ -42,6 +48,7 @@ struct MapView: View {
                                 .foregroundColor(.blue)
                             }
                         }
+
                     }
                 }
                 VStack(alignment: .leading){

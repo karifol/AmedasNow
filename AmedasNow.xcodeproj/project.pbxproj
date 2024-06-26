@@ -13,6 +13,7 @@
 		C4AEB4652C281A830084B103 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AEB4642C281A830084B103 /* Preview Assets.xcassets */; };
 		C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB46D2C281C3A0084B103 /* MapView.swift */; };
 		C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB46F2C2990410084B103 /* AmedasTableData.swift */; };
+		C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C4AEB4642C281A830084B103 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C4AEB46D2C281C3A0084B103 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C4AEB46F2C2990410084B103 /* AmedasTableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmedasTableData.swift; sourceTree = "<group>"; };
+		C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestTimeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
+				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
+				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
