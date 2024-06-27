@@ -12,11 +12,13 @@ struct MapView: View {
     
     // 地点テーブル
     var amedasTableDataList = AmedasTableData()
-    @State private var amedasTableData: AmedasTableItem? = nil
+//    @State private var amedasTableData: AmedasTableItem? = nil
     
     // 最新時刻
     var latestTimeData = LatestTimeData()
-    @State private var latestTime: String = ""
+    var timeDelta: Int = 10 // 最新時刻からの差分
+//    @State private var latestTime: String = ""
+//    @State private var latestTimeDate: Date = Date()
     
     init(){
         amedasTableDataList.serchAmedasTable()
@@ -68,7 +70,7 @@ struct MapView: View {
                             .offset(x: 10, y: -50)
                     }
                     // タイムスライダー
-                    TimesliderView
+                    TimesliderView(date: self.latestTimeData.latestTimaDate, delta: self.timeDelta)
                         .offset(y: -50)
                 }
             }
@@ -91,30 +93,39 @@ extension MapView {
         .background(.blue)
         .fontWeight(.bold)
     }
-    
+
     // timeslider
-    private var TimesliderView: some View {
-        HStack {
-            Button{
-                
-            } label: {
-                Image(systemName: "lessthan")
-            }
-            
-            Text("12:00")
-            Button{
-                
-            } label: {
-                Image(systemName: "greaterthan")
-            }
+    struct TimesliderView: View {
+        var date: Date
+        var delta: Int
+        // 差分を時間に変換
+        var dateStr: String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            let newDate = Calendar.current.date(byAdding: .minute, value: -delta, to: date) ?? Date()
+            return formatter.string(from: newDate)
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .padding(.vertical, 10)
-        .background(.black.opacity(0.5))
-        .foregroundColor(.white)
-        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+        var body: some View {
+            HStack {
+                Button{
+
+                } label: {
+                    Image(systemName: "lessthan")
+                }
+                Text(dateStr)
+                Button{
+                } label: {
+                    Image(systemName: "greaterthan")
+                }
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .padding(.vertical, 10)
+            .background(.black.opacity(0.5))
+            .foregroundColor(.white)
+            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+        }
     }
-    
+
     // legend temperature
     private var LegendTempView: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -134,7 +145,7 @@ extension MapView {
         .padding(10)
         .background(.white)
     }
-    
+
     // legend wind
     private var LegendWindView: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -150,7 +161,7 @@ extension MapView {
         .padding(10)
         .background(.white)
     }
-    
+
     // legend prec
     private var LegendPrecView: some View {
         VStack(alignment: .leading, spacing: 2) {
@@ -170,7 +181,6 @@ extension MapView {
     }
 
 
-    
     // legend row
     struct LegendRowView: View {
         let label: String
@@ -186,7 +196,7 @@ extension MapView {
             }
         }
     }
-    
+
     // picker
     private var ElementPickerView: some View {
         Picker("Options", selection: $selectedElement) {

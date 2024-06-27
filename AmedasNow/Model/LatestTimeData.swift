@@ -20,6 +20,7 @@ struct latestTime: Identifiable{
 @Observable class LatestTimeData {
     
     var latestTIme: String = ""
+    var latestTimaDate: Date = Date()
     
     // Web API検索用メソッド
     func serchLatestTime() {
@@ -46,8 +47,12 @@ struct latestTime: Identifiable{
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
-            latestTIme = String(data: data, encoding: .utf8) ?? ""
-            print(latestTIme)
+            latestTIme = String(data: data, encoding: .utf8) ?? "" // 2024-06-27T20:00:00+09:00
+            // 日付型に変換
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            latestTimaDate = formatter.date(from: latestTIme) ?? Date()
+            print(latestTimaDate)
 
         } catch(let error) {
             print("エラーが出ました")
