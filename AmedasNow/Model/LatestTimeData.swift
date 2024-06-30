@@ -7,27 +7,13 @@
 
 import SwiftUI
 
-// Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
-struct latestTime: Identifiable{
-    let id = UUID()
-    let lat: Double
-    let lon: Double
-    let name: String
-    let type: String
-}
+class LatestTimeData: ObservableObject {
 
-// お菓子データ検索用のクラス
-@Observable class LatestTimeData {
-    
-    var latestTIme: String = ""
-    var latestTimaDate: Date = Date()
-    
+    var latestTime: Date = Date()
+
     // Web API検索用メソッド
-    func serchLatestTime() {
-        // Taskは非同期で処理を実行できる
+    func get() {
         Task {
-            // ここから先は非同期で実行される
-            // 非同期でお菓子を検索する
             await search()
         }
     }
@@ -41,21 +27,20 @@ struct latestTime: Identifiable{
         else {
             return
         }
-        
+
         print(req_url)
 
         do {
             // リクエストURLからダウンロード
-            let (data, _) = try await URLSession.shared.data(from: req_url)
-            latestTIme = String(data: data, encoding: .utf8) ?? "" // 2024-06-27T20:00:00+09:00
-            // 日付型に変換
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            latestTimaDate = formatter.date(from: latestTIme) ?? Date()
-            print(latestTimaDate)
+            let (data, _) = try await URLSession.shared.data(from: req_url) // 2024-06-29T12:00:00+09:00
+            let str = String(data: data, encoding: .utf8)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            latestTime = dateFormatter.date(from: str!)!
+            print("latestTime: \(latestTime)")
 
         } catch(let error) {
-            print("エラーが出ました")
+            print("エラーが出ました LatestTimeData")
             print(error)
         }
     }

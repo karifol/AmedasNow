@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var selection: Int = 1
-
+    @State var selection: Int = 3
+    
     var body: some View {
         TabView(selection: $selection) {
             Text("1")
@@ -31,7 +31,7 @@ struct ContentView: View {
                     Text("ランキング")
                 }
                 .tag(2)
-            Text("1")
+            GraphView()
                 .tabItem {
                     Image(systemName: "chart.xyaxis.line")
                     Text("グラフ")

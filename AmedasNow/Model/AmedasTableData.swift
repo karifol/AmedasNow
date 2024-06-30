@@ -35,7 +35,7 @@ struct AmedasTableItem: Identifiable{
     typealias ResultJson = [String: Item]
 
 
-    var amedasList: [AmedasTableItem] = []
+    var amedasDict: [String: AmedasTableItem] = [:]
 
     // Web API検索用メソッド
     func serchAmedasTable() {
@@ -56,7 +56,7 @@ struct AmedasTableItem: Identifiable{
         else {
             return
         }
-        
+
         print(req_url)
 
         do {
@@ -67,24 +67,22 @@ struct AmedasTableItem: Identifiable{
             let decoder = JSONDecoder()
             let result = try decoder.decode(ResultJson.self, from: data)
 
-            // お菓子のリストを初期化
-            amedasList.removeAll()
+            amedasDict = [:]
 
             // 取得しているお菓子を構造体でまとめて管理
-            for (_, item) in result {
+            for (key, item) in result {
                 if let lat = item.lat,
-                   let lon = item.lon,
-                   let type = item.type,
-                   let name = item.kjName{
-                    let amedasItem = AmedasTableItem(
+                let lon = item.lon,
+                let type = item.type,
+                let name = item.kjName{
+                let amedasItem = AmedasTableItem(
                         lat: lat[0] + lat[1] / 60,
                         lon: lon[0] + lon[1] / 60,
                         name: name,
                         type: type
                     )
-                    amedasList.append(amedasItem)
+                    amedasDict[key] = amedasItem
                 }
-
             }
         } catch(let error) {
             print("エラーが出ました")
