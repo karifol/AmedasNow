@@ -11,26 +11,22 @@ import Charts
 struct TempChartView: View {
 
     let dataList:[PointItem]
-    
-    struct SampleData: Identifiable {
-        var id: String { name }
-        let name: String
-        let amount: Double
-        let from: String
+
+    // y軸の最小値と最大値を計算
+    // データの最小値-1度から最大値+1度までの範囲を返す
+    var yRange: ClosedRange<Double> {
+        guard let min = dataList.map(\.temp).min(),
+              let max = dataList.map(\.temp).max()
+        else {
+            return 0...100
+        }
+        return (min - 1)...(max + 1)
     }
-//    let sampleData: [SampleData] = [
-//        .init(name: "10:10", amount: 23.4, from: "PlaceA"),
-//        .init(name: "10:20", amount: 23.5, from: "PlaceA"),
-//        .init(name: "10:30", amount: 20, from: "PlaceA"),
-//        .init(name: "10:40", amount: 31.2, from: "PlaceA"),
-//        .init(name: "10:50", amount: 13.4,from: "PlaceA"),
-//        .init(name: "11:00", amount: 20.3,from: "PlaceA")
-//    ]
 
     var body: some View {
         Chart(dataList) { data in
             LineMark(
-                x: .value("Name", data.date),
+                x: .value("日時", data.date),
                 y: .value("Amount", data.temp)
 
             )
@@ -41,8 +37,20 @@ struct TempChartView: View {
                     .frame(width: 10, height: 10)
             }
         }
-        .chartYScale(domain: 25 ... 30)
+//        .chartYScale(domain: 25 ... 30)
+        .chartYScale(domain: yRange)
+        .chartXAxis {
+            AxisMarks(values: .automatic){ date in
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel(format: .dateTime.hour())
+            }
+        }
         .foregroundColor(.red)
         .frame(height: 200)
     }
+}
+
+#Preview {
+    ContentView()
 }

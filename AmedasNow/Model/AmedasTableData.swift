@@ -10,6 +10,7 @@ import SwiftUI
 // Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
 struct AmedasTableItem: Identifiable{
     let id = UUID()
+    let amsid: String
     let lat: Double
     let lon: Double
     let name: String
@@ -76,6 +77,7 @@ struct AmedasTableItem: Identifiable{
                 let type = item.type,
                 let name = item.kjName{
                 let amedasItem = AmedasTableItem(
+                        amsid: key,
                         lat: lat[0] + lat[1] / 60,
                         lon: lon[0] + lon[1] / 60,
                         name: name,

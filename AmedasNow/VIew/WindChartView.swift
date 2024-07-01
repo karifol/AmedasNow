@@ -9,27 +9,24 @@ import SwiftUI
 import Charts
 
 struct WindChartView: View {
-    
-    struct SampleData: Identifiable {
-        var id: String { name }
-        let name: String
-        let amount: Double
-        let from: String
+
+    let dataList:[PointItem]
+
+    // y軸の最小値と最大値を計算
+    // データの最小値-1度から最大値+1度までの範囲を返す
+    var yRange: ClosedRange<Double> {
+        guard let max = dataList.map(\.wind).max()
+        else {
+            return 0...100
+        }
+        return 0...(max + 2)
     }
-    let sampleData: [SampleData] = [
-        .init(name: "10:10", amount: 23.4, from: "PlaceA"),
-        .init(name: "10:20", amount: 23.5, from: "PlaceA"),
-        .init(name: "10:30", amount: 20, from: "PlaceA"),
-        .init(name: "10:40", amount: 31.2, from: "PlaceA"),
-        .init(name: "10:50", amount: 13.4,from: "PlaceA"),
-        .init(name: "11:00", amount: 20.3,from: "PlaceA")
-    ]
 
     var body: some View {
-        Chart(sampleData) { data in
+        Chart(dataList) { data in
             LineMark(
-                x: .value("Name", data.name),
-                y: .value("Amount", data.amount)
+                x: .value("Name", data.date),
+                y: .value("Amount", data.wind)
 
             )
             .lineStyle(StrokeStyle(lineWidth: 2))
@@ -39,11 +36,8 @@ struct WindChartView: View {
                     .frame(width: 10, height: 10)
             }
         }
+        .chartYScale(domain: yRange)
         .foregroundColor(Color.green)
         .frame(height: 200)
     }
-}
-
-#Preview {
-    WindChartView()
 }

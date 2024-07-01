@@ -17,8 +17,14 @@ struct GraphView: View {
     var amedasTableData = AmedasTableData()
     init(){
         amedasTableData.serchAmedasTable()
-        pointData.serchAmedas()
+        pointData.serchAmedas(
+            amsid: "44132"
+        )
     }
+    
+    var latestTimeData = LatestTimeData()
+    
+    @State var selectedName = "東京"
 
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 35.6895, longitude: 139.6917),
@@ -30,24 +36,33 @@ struct GraphView: View {
             HeaderView
             Map(){
                 ForEach(Array(amedasTableData.amedasDict.values), id: \.id) { amedas in
-                    let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
-                    Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
-                        VStack {
-                            Circle()
-                                .fill(Color.blue)
-                                .frame(width: 10, height: 10)
-                                .overlay(
-                                    Circle()
-                                        .stroke(Color.black, lineWidth: 1)
+                    if amedas.type == "A" {
+                        let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
+                        Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
+                            VStack {
+                                Circle()
+                                    .fill(Color.blue)
+                                    .frame(width: 10, height: 10)
+                                    .overlay(
+                                        Circle()
+                                            .stroke(Color.black, lineWidth: 1)
+                                    )
+                            }
+                            .onTapGesture {
+                                selectedName = amedas.name
+                                pointData.serchAmedas(
+                                    amsid: amedas.amsid
                                 )
+                            }
                         }
                     }
+
                 }
             }
                 .frame(height: 200)
                 .padding()
 
-            PlaceNameView(text: "東京")
+            PlaceNameView(text: selectedName)
             ScrollView {
                 // グラフ
                 VStack(alignment: .leading) {
@@ -60,13 +75,17 @@ struct GraphView: View {
                 .padding(.horizontal, 20)
                 VStack(alignment: .leading) {
                     WindTitleView()
-                    WindChartView()
+                    WindChartView(
+                        dataList: pointData.dataList
+                    )
                         .frame(height: 200)
                 }
                 .padding(.horizontal, 20)
                 VStack(alignment: .leading) {
                     Prec1hTitleView()
-                    Prec1hChartView()
+                    Prec1hChartView(
+                        dataList: pointData.dataList
+                    )
                         .frame(height: 200)
                 }
                 .padding(.horizontal, 20)
