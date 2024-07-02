@@ -26,17 +26,17 @@ struct GraphView: View {
     
     @State var selectedName = "東京"
 
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 35.6895, longitude: 139.6917),
+    @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 35.711, longitude: 139.866),
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-    )
+    ))
 
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
             HeaderView
-            Map(){
+            Map(position: $cameraPosition){
                 ForEach(Array(amedasTableData.amedasDict.values), id: \.id) { amedas in
-                    if amedas.type == "A" {
+                    if amedas.type != "A" {
                         let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
                         Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
                             VStack {

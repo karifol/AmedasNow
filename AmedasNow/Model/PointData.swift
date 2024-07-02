@@ -61,7 +61,7 @@ struct PointItem: Identifiable{
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             let latestTime = dateFormatter.date(from: str!)!
             // 3時間前のデータを取得する
-            let latestTime3hAgo = latestTime.addingTimeInterval(-5*60*60)
+            let latestTime3hAgo = latestTime.addingTimeInterval(-3*60*60)
             dateFormatter.dateFormat = "yyyyMMdd_HH"
             let latestTimeStr = dateFormatter.string(from: latestTime3hAgo)
             return latestTimeStr
