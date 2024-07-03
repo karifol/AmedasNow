@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            Text("1")
+            MenueView()
                 .tabItem {
                     Image(systemName: "menucard")
                     Text("メニュー")

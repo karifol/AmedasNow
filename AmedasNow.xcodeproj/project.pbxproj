@@ -20,6 +20,7 @@
 		C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47B2C302EEA0084B103 /* WindChartView.swift */; };
 		C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */; };
 		C4AEB4802C3104B20084B103 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47F2C3104B20084B103 /* PointData.swift */; };
+		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C4AEB47B2C302EEA0084B103 /* WindChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindChartView.swift; sourceTree = "<group>"; };
 		C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prec1hChartView.swift; sourceTree = "<group>"; };
 		C4AEB47F2C3104B20084B103 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
+		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4AEB4752C3017A10084B103 /* GraphView.swift */,
 				C4AEB4792C302EB40084B103 /* TempChartView.swift */,
+				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */,
 				C4AEB47B2C302EEA0084B103 /* WindChartView.swift */,
 			);
@@ -189,6 +192,7 @@
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
+				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB47A2C302EB40084B103 /* TempChartView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
