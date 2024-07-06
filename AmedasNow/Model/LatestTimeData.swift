@@ -9,7 +9,8 @@ import SwiftUI
 
 class LatestTimeData: ObservableObject {
 
-    var latestTime: Date = Date()
+    @Published var latestTime: Date = Date()
+
 
     // Web API検索用メソッド
     func get() {

@@ -26,7 +26,13 @@ struct Prec1hChartView: View {
                     .frame(width: 10, height: 10)
             }
         }
-//        .chartYScale(domain: 0...50)
+        .chartXAxis {
+            AxisMarks(values: .stride(by: .minute, count: 10)){ date in
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel(anchor: UnitPoint(x: 0, y: -2))
+            }
+        }
         .foregroundColor(Color.blue)
         .frame(height: 200)
     }

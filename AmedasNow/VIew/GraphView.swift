@@ -12,7 +12,7 @@ struct GraphView: View {
 
     // アメダスデータ
     var pointData = PointData()
-    
+
     // アメダス地点データ
     var amedasTableData = AmedasTableData()
     init(){
@@ -21,9 +21,9 @@ struct GraphView: View {
             amsid: "44132"
         )
     }
-    
+
     var latestTimeData = LatestTimeData()
-    
+
     @State var selectedName = "東京"
 
     @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
@@ -36,30 +36,27 @@ struct GraphView: View {
             HeaderView
             Map(position: $cameraPosition){
                 ForEach(Array(amedasTableData.amedasDict.values), id: \.id) { amedas in
-                    if amedas.type != "A" {
-                        let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
-                        Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
-                            VStack {
-                                Circle()
-                                    .fill(Color.blue)
-                                    .frame(width: 10, height: 10)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(Color.black, lineWidth: 1)
-                                    )
-                            }
-                            .onTapGesture {
-                                selectedName = amedas.name
-                                pointData.serchAmedas(
+                    let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
+                    Annotation("", coordinate: targetCoordinate, anchor: .center) {
+                        VStack{
+                            Text(amedas.name)
+                                .padding(5)
+                                .foregroundStyle(amedas.type == "A" ? Color.white : Color.black)
+                                .bold()
+                        }
+                        .background(amedas.type == "A" ? Color.pink : Color.white)
+                        .border(Color.black, width: 1)
+                        .onTapGesture {
+                            selectedName = amedas.name
+                                pointData.changePoint(
                                     amsid: amedas.amsid
                                 )
-                            }
                         }
                     }
 
                 }
             }
-                .frame(height: 200)
+                .frame(height: 300)
                 .padding()
 
             PlaceNameView(text: selectedName)
@@ -115,7 +112,7 @@ extension GraphView {
             HStack (spacing: 0) {
                 Image(systemName: "thermometer")
                     .foregroundStyle(.red)
-                Text("気温")
+                Text("気温[℃]")
                     .foregroundStyle(.red)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -130,7 +127,7 @@ extension GraphView {
             HStack (spacing: 0) {
                 Image(systemName: "wind")
                     .foregroundStyle(.green)
-                Text("風速")
+                Text("風速[m/s]")
                     .foregroundStyle(.green)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -145,7 +142,7 @@ extension GraphView {
             HStack (spacing: 0) {
                 Image(systemName: "drop")
                     .foregroundStyle(.blue)
-                Text("前１時間降水量")
+                Text("前１時間降水量[mm]")
                     .foregroundStyle(.blue)
                     .font(.title2)
                     .fontWeight(.bold)

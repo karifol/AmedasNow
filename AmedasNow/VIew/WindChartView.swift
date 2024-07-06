@@ -37,6 +37,13 @@ struct WindChartView: View {
             }
         }
         .chartYScale(domain: yRange)
+        .chartXAxis {
+            AxisMarks(values: .stride(by: .minute, count: 10)){ date in
+                AxisGridLine()
+                AxisTick()
+                AxisValueLabel(anchor: UnitPoint(x: 0, y: -2))
+            }
+        }
         .foregroundColor(Color.green)
         .frame(height: 200)
     }

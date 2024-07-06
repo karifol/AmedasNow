@@ -14,18 +14,29 @@ struct MapView: View {
     var amedasMapDataList = AmedasMapData(
         amedasTableData: AmedasTableData()
     )
-
+    
+    // タップされた地点
+    @State private var selectedAmedas: AmedasMapItem?
     // 最新時刻
     @ObservedObject var latestTimeData = LatestTimeData()
     @State private var timeDelta: Int = 0 // 最新時刻からの差分
     @State private var basetimeDate: Date = Date()
 
+    // Mapのカメラポジション
+    @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 35.711, longitude: 139.866),
+        span: MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
+    ))
+
     init(){
         latestTimeData.get()
+        amedasMapDataList.serchAmedas(
+            basetime: "999"
+        )
     }
 
     // 要素のpicker
-    @State private var selectedElement = "temp"
+    @State private var selectedElement = "wind"
     private let elementList = [["風速", "wind"], ["気温", "temp"], ["降水量", "prec1h"]]
 
     var body: some View {
@@ -56,9 +67,6 @@ struct MapView: View {
                 }
             }
         }
-        .onAppear {
-            latestTimeData.get()
-        }
     }
 }
 
@@ -66,33 +74,75 @@ extension MapView {
 
     // map
     private var MapView: some View {
-        Map(){
+        Map(position: $cameraPosition){
             ForEach(amedasMapDataList.amedasList) { amedas in
                 let targetCoordinate = CLLocationCoordinate2D(
                     latitude: amedas.lat,
                     longitude: amedas.lon
                 )
-                if (amedas.type == "A") {
-                    Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
-                        VStack {
+
+                Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
+                    VStack {
+                        if selectedElement == "wind" {
+                            // 矢印
+                            Image(systemName: "arrow.up")
+                                .resizable()
+                                .frame(width: 34, height: 24)
+                                .bold()
+                                .foregroundColor(.black)
+                                .overlay(
+                                    Image(systemName: "arrow.up")
+                                        .resizable()
+                                        .frame(width: 30, height: 20)
+                                        .foregroundColor(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                        .offset(y: -1)
+                                )
+                                .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
+
+                        } else {
                             Circle()
                                 .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                .frame(width: 10, height: 10)
+                                // 気温のときだけ半透明
+                                .opacity(selectedElement == "temp" ? 0.5 : 1)
+                                .frame(width: 20, height: 20)
                                 .overlay(
-                                    Circle()
-                                        .stroke(Color.black, lineWidth: 1)
+                                    // 降水のとき、降水量が0のときは枠線を表示しない
+                                    selectedElement == "prec1h" && amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
                                 )
                         }
-                        .padding()
-                        .foregroundColor(.blue)
-                        .onTapGesture {
-                            print(amedas.temp)
-                            print(amedas.prec1h)
-                            print(amedas.wind)
-                        }
+
+                    }
+                    .padding()
+                    .foregroundColor(.blue)
+                    .onTapGesture {
+                        selectedAmedas = amedas
                     }
                 }
             }
+
+        }
+        // 下から少しだけ出す
+        .sheet(item: $selectedAmedas) { item in
+            VStack{
+                Text(item.name)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .padding()
+                Text("気温: \(item.temp)℃")
+                Text("降水量: \(item.prec1h)mm/h")
+                Text("風速: \(item.wind)m/s")
+                Text("風向: \(item.windDirection)°")
+            }
+            .frame(width: 300, height: 400)
+            .background(Color.white)
+            .cornerRadius(20)
+            .presentationDetents([
+                .medium,
+                .large,
+                // 高さ
+                .height(200),
+                // 画面に対する割合
+                .fraction(0.8)
+            ])
         }
     }
 
@@ -159,6 +209,7 @@ extension MapView {
         .background(.black.opacity(0.5))
         .foregroundColor(.white)
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+
     }
 
 
@@ -341,7 +392,7 @@ extension MapView {
 
 extension Color {
     // 気温
-    static var temp35  = Color(red: 180 / 255, green: 0 / 255,   blue: 144)
+    static var temp35  = Color(red: 180 / 255, green: 0 / 255,   blue: 14)
     static var temp30  = Color(red: 255 / 255, green: 40 / 255,  blue: 0)
     static var temp25  = Color(red: 255 / 255, green: 153 / 255, blue: 0)
     static var temp20  = Color(red: 255 / 255, green: 245 / 255, blue: 0)

@@ -131,6 +131,8 @@
 			dependencies = (
 			);
 			name = AmedasNow;
+			packageProductDependencies = (
+			);
 			productName = AmedasNow;
 			productReference = C4AEB4592C281A820084B103 /* AmedasNow.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +161,8 @@
 				Base,
 			);
 			mainGroup = C4AEB4502C281A820084B103;
+			packageReferences = (
+			);
 			productRefGroup = C4AEB45A2C281A820084B103 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,10 +352,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kairfol.AmedasNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -386,10 +391,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kairfol.AmedasNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

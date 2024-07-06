@@ -10,7 +10,7 @@ import Charts
 
 struct TempChartView: View {
 
-    let dataList:[PointItem]
+    var dataList:[PointItem]
 
     // y軸の最小値と最大値を計算
     // データの最小値-1度から最大値+1度までの範囲を返す
@@ -40,10 +40,10 @@ struct TempChartView: View {
 //        .chartYScale(domain: 25 ... 30)
         .chartYScale(domain: yRange)
         .chartXAxis {
-            AxisMarks(values: .automatic){ date in
+            AxisMarks(values: .stride(by: .minute, count: 10)){ date in
                 AxisGridLine()
                 AxisTick()
-                AxisValueLabel(format: .dateTime.hour())
+                AxisValueLabel(anchor: UnitPoint(x: 0, y: -2))
             }
         }
         .foregroundColor(.red)

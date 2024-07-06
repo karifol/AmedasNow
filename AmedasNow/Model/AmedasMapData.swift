@@ -57,30 +57,49 @@ struct AmedasMapItem: Identifiable{
 
     // @MainActorを使いメインスレッドで更新する
     @MainActor
-    private func search(
-        basetime: String
-    ) async {
+    private func search( basetime: String ) async {
+        var basetime2 = ""
+        // basetimeが空白の場合はlatestTimeData.latestTimeを同期処理で取得
+        if basetime == "999" {
+            // リクエストURLの組み立て
+            guard let req_url_date = URL(string: "https://www.jma.go.jp/bosai/amedas/data/latest_time.txt")
+            else {
+                return
+            }
 
+            do {
+                // リクエストURLからダウンロード
+                let (data, _) = try await URLSession.shared.data(from: req_url_date) // 2024-06-29T12:00:00+09:00
+                let str = String(data: data, encoding: .utf8)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let date = dateFormatter.date(from: str!)
+                let dateFormatter2 = DateFormatter()
+                dateFormatter2.dateFormat = "yyyyMMddHHmmss"
+                basetime2 = dateFormatter2.string(from: date!)
+
+            } catch(let error) {
+                print("エラーが出ました LatestTimeData")
+                print(error)
+            }
+        } else {
+            basetime2 = basetime
+        }
         // リクエストURLの組み立て
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/map/\(basetime).json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/map/\(basetime2).json")
         else {
             return
         }
-
-        print(req_url)
-
         do {
+            print(req_url)
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
-
             // 受け取ったJSONデータをパースして格納
             let decoder = JSONDecoder()
             let result = try decoder.decode(ResultJson.self, from: data)
-
-            // お菓子のリストを初期化
+            // リストを初期化
             amedasList.removeAll()
-
-            // 取得しているお菓子を構造体でまとめて管理
+            // 構造体でまとめて管理
             for (key, item) in result {
                 if let temp = item.temp,
                 let prec1h = item.precipitation1h?.first,
@@ -98,7 +117,6 @@ struct AmedasMapItem: Identifiable{
                     )
                     amedasList.append(amedasItem)
                 }
-
             }
         } catch(let error) {
             print("エラーが出ました")

@@ -21,38 +21,50 @@ struct PointItem: Identifiable{
 
     // JSONのitem内のデータ構造
     struct Item: Codable {
-        let prefNumber: Double?
-        let observationNumber: Double?
-        let temp: [Double]?
-        let precipitation1h: [Double]?
-        let wind: [Double]?
+        let temp: [Double?]?
+        let precipitation1h: [Double?]?
+        let wind: [Double?]?
+        let windDirection: [Double?]?
     }
     // 複数要素
     typealias ResultJson = [String: Item]
 
+    // 保持するデータ
     var dataList: [PointItem] = []
+    var dataDic: [String: [PointItem]] = [:]
 
     // Web API検索用メソッド
     func serchAmedas(amsid: String) {
-        // Taskは非同期で処理を実行できる
         Task {
-            let latestTime = await searchLatestTime()
-            await search(amsid: amsid, latestTime: latestTime)
+            let latestTimeDate = await searchLatestTime()
+            // リストを初期化
+            dataDic.removeAll()
+            // 10分ずつずらしながら60分前までのデータを取得
+            for i in 0..<6 {
+                let latestTime = Calendar.current.date(byAdding: .minute, value: -10 * i, to: latestTimeDate)!
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyyMMddHHmmss"
+                let latestTimeStr = dateFormatter.string(from: latestTime)
+                await search(amsid: amsid, latestTime: latestTimeStr)
+            }
+            dataList.removeAll()
+            dataList = dataDic[amsid] ?? []
         }
+    }
+
+    func changePoint(amsid: String) {
+        dataList.removeAll()
+        dataList = dataDic[amsid] ?? []
     }
 
     // @MainActorを使いメインスレッドで更新する
     @MainActor
-    private func searchLatestTime() async -> String {
-
+    private func searchLatestTime() async -> Date {
         // リクエストURLの組み立て
         guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/latest_time.txt")
         else {
-            return ""
+            return Date()
         }
-
-        print(req_url)
-
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url) // 2024-06-29T12:00:00+09:00
@@ -60,68 +72,56 @@ struct PointItem: Identifiable{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             let latestTime = dateFormatter.date(from: str!)!
-            // 3時間前のデータを取得する
-            let latestTime3hAgo = latestTime.addingTimeInterval(-3*60*60)
-            dateFormatter.dateFormat = "yyyyMMdd_HH"
-            let latestTimeStr = dateFormatter.string(from: latestTime3hAgo)
-            return latestTimeStr
+            return latestTime
 
         } catch(let error) {
             print("エラーが出ました LatestTimeData")
             print(error)
-            return ""
+            return Date()
         }
     }
 
     @MainActor
     private func search(amsid: String, latestTime: String) async {
         // リクエストURLの組み立て
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/point/\(amsid)/\(latestTime).json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/map/\(latestTime).json")
         else {
             return
         }
-
-        print(req_url)
-
+//        print("url: \(req_url)")
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
-
             // 受け取ったJSONデータをパースして格納
             let decoder = JSONDecoder()
             let result = try decoder.decode(ResultJson.self, from: data)
 
-            // お菓子のリストを初期化
-            dataList.removeAll()
-
             // 取得しているお菓子を構造体でまとめて管理
             for (key, item) in result {
                 if let temp = item.temp,
-                    let wind = item.wind,
-                   let prec1h = item.precipitation1h{
-
+                let prec1h = item.precipitation1h?.first,
+                let wind = item.wind{
+                    
                     // 日付型の文字列をDate型に変換
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMddHHmmss"
-                    let date = dateFormatter.date(from: key)
-                    dateFormatter.dateFormat = "HH:mm"
-                    let dateStr = dateFormatter.string(from: date!)
-
+                    let date = dateFormatter.date(from: latestTime)
+                    
                     let amedasItem = PointItem(
-                        temp: temp[0],
-                        wind: wind[0],
-                        prec1h: prec1h[0],
+                        temp: temp[0] ?? 999,
+                        wind: wind[0] ?? 999,
+                        prec1h: prec1h ?? 999,
                         date: date ?? Date()
                     )
-                    dataList.append(amedasItem)
+                    dataDic[key, default: []].append(amedasItem)
                 }
+                // sort
+                dataDic[key] = dataDic[key]?.sorted(by: { $0.date < $1.date })
             }
-
-            dataList.sort { $0.date < $1.date }
+            
         } catch(let error) {
             print("エラーが出ました")
             print(error)
         }
     }
 }
-
