@@ -35,6 +35,11 @@ struct TempChartView: View {
                 Circle()
                     .foregroundColor(.red)
                     .frame(width: 10, height: 10)
+                    // ラベル
+                    
+//                Text(data.temp)
+//                    .foregroundColor(.red)
+//                    .frame(width: 10, height: 10)
             }
         }
 //        .chartYScale(domain: 25 ... 30)

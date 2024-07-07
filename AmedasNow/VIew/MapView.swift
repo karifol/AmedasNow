@@ -36,7 +36,7 @@ struct MapView: View {
     }
 
     // 要素のpicker
-    @State private var selectedElement = "wind"
+    @State private var selectedElement = "temp"
     private let elementList = [["風速", "wind"], ["気温", "temp"], ["降水量", "prec1h"]]
 
     var body: some View {
@@ -80,7 +80,6 @@ extension MapView {
                     latitude: amedas.lat,
                     longitude: amedas.lon
                 )
-
                 Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
                     VStack {
                         if selectedElement == "wind" {
@@ -99,15 +98,20 @@ extension MapView {
                                 )
                                 .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
 
-                        } else {
+                        } else if selectedElement == "temp" {
                             Circle()
                                 .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                // 気温のときだけ半透明
-                                .opacity(selectedElement == "temp" ? 0.5 : 1)
+                                .opacity(0.5)
                                 .frame(width: 20, height: 20)
                                 .overlay(
-                                    // 降水のとき、降水量が0のときは枠線を表示しない
-                                    selectedElement == "prec1h" && amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
+                                    Circle().stroke(Color.black, lineWidth: 1)
+                                )
+                        } else if selectedElement == "prec1h" {
+                            Circle()
+                                .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                .frame(width: 20, height: 20)
+                                .overlay(
+                                    amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
                                 )
                         }
 
@@ -126,11 +130,54 @@ extension MapView {
             VStack{
                 Text(item.name)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .bold()
                     .padding()
-                Text("気温: \(item.temp)℃")
-                Text("降水量: \(item.prec1h)mm/h")
-                Text("風速: \(item.wind)m/s")
-                Text("風向: \(item.windDirection)°")
+                HStack(spacing: 20){
+                    VStack{
+                        HStack{
+                            Image(systemName: "thermometer")
+                            Text("気温")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.red)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.temp))
+                                .font(.title2)
+                            Text("℃")
+                        }
+                    }
+
+                    VStack{
+                        HStack{
+                            Image(systemName: "wind")
+                            Text("風速")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.green)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.wind))
+                                .font(.title2)
+                            Text("m/s")
+                        }
+                    }
+
+                    VStack{
+                        HStack{
+                            Image(systemName: "drop")
+                            Text("降水量")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.blue)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.prec1h))
+                                .font(.title2)
+                            Text("mm/h")
+                        }
+                    }
+                }
             }
             .frame(width: 300, height: 400)
             .background(Color.white)
