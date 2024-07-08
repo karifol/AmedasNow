@@ -219,6 +219,7 @@ extension MapView {
                     amedasMapDataList.serchAmedas(
                         basetime: basetime
                     )
+                    latestTimeData.get()
                 }
 
             } label: {
@@ -241,6 +242,7 @@ extension MapView {
                     amedasMapDataList.serchAmedas(
                         basetime: basetime
                     )
+
                 }
             } label: {
                 if timeDelta == 0 {

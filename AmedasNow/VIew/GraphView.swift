@@ -58,6 +58,11 @@ struct GraphView: View {
             }
                 .frame(height: 300)
                 .padding()
+                .onAppear(){
+                    pointData.serchAmedas(
+                        amsid: "44132"
+                    )
+                }
 
             PlaceNameView(text: selectedName)
             ScrollView {

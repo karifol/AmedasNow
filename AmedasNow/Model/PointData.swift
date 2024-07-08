@@ -13,6 +13,7 @@ struct PointItem: Identifiable{
     let id = UUID()
     let temp: Double
     let wind: Double
+    let windDirection: Double
     let prec1h: Double
     let date: Date
 }
@@ -35,6 +36,7 @@ struct PointItem: Identifiable{
 
     // Web API検索用メソッド
     func serchAmedas(amsid: String) {
+        print("search")
         Task {
             let latestTimeDate = await searchLatestTime()
             // リストを初期化
@@ -100,6 +102,7 @@ struct PointItem: Identifiable{
             for (key, item) in result {
                 if let temp = item.temp,
                 let prec1h = item.precipitation1h?.first,
+                let windDirection = item.windDirection,
                 let wind = item.wind{
                     
                     // 日付型の文字列をDate型に変換
@@ -110,6 +113,7 @@ struct PointItem: Identifiable{
                     let amedasItem = PointItem(
                         temp: temp[0] ?? 999,
                         wind: wind[0] ?? 999,
+                        windDirection: windDirection[0] ?? 999,
                         prec1h: prec1h ?? 999,
                         date: date ?? Date()
                     )
