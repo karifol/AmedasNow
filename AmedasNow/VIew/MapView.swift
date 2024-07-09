@@ -84,43 +84,52 @@ extension MapView {
                     VStack {
                         if selectedElement == "wind" {
                             // 矢印
-                            Image(systemName: "arrow.up")
-                                .resizable()
-                                .frame(width: 34, height: 24)
-                                .bold()
-                                .foregroundColor(.black)
-                                .overlay(
-                                    Image(systemName: "arrow.up")
-                                        .resizable()
-                                        .frame(width: 30, height: 20)
-                                        .foregroundColor(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                        .offset(y: -1)
-                                )
-                                .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
-
+                            Button(){
+                                selectedAmedas = amedas
+                            } label: {
+                                Image(systemName: "arrow.up")
+                                    .resizable()
+                                    .frame(width: 34, height: 24)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .overlay(
+                                        Image(systemName: "arrow.up")
+                                            .resizable()
+                                            .frame(width: 30, height: 20)
+                                            .foregroundColor(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                            .offset(y: -1)
+                                    )
+                                    .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
+                            }
                         } else if selectedElement == "temp" {
-                            Circle()
-                                .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                .opacity(0.5)
-                                .frame(width: 20, height: 20)
-                                .overlay(
-                                    Circle().stroke(Color.black, lineWidth: 1)
-                                )
+                            Button(){
+                                selectedAmedas = amedas
+                            } label: {
+                                Circle()
+                                    .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                    .opacity(0.5)
+                                    .frame(width: 20, height: 20)
+                                    .overlay(
+                                        Circle().stroke(Color.black, lineWidth: 1)
+                                    )
+                            }
+
                         } else if selectedElement == "prec1h" {
-                            Circle()
-                                .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                .frame(width: 20, height: 20)
-                                .overlay(
-                                    amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
-                                )
+                            Button(){
+                                selectedAmedas = amedas
+                            } label: {
+                                Circle()
+                                    .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                    .frame(width: 20, height: 20)
+                                    .overlay(
+                                        amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
+                                    )
+                            }
                         }
 
                     }
                     .padding()
                     .foregroundColor(.blue)
-                    .onTapGesture {
-                        selectedAmedas = amedas
-                    }
                 }
             }
 

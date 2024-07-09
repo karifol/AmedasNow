@@ -45,12 +45,13 @@ struct GraphView: View {
                                 .bold()
                         }
                         .background(amedas.type == "A" ? Color.pink : Color.white)
-                        .border(Color.black, width: 1)
+                        .border(amedas.name == selectedName ? Color.blue : Color.black, width: amedas.name == selectedName ? 4 : 2)
+                        .scaleEffect(amedas.name == selectedName ? 1.5 : 1)
                         .onTapGesture {
                             selectedName = amedas.name
-                                pointData.changePoint(
-                                    amsid: amedas.amsid
-                                )
+                            pointData.changePoint(
+                                amsid: amedas.amsid
+                            )
                         }
                     }
 
