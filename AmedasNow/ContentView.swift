@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var selection: Int = 1
+    @State var selection: Int = 2
     
     var body: some View {
         TabView(selection: $selection) {
@@ -25,7 +25,7 @@ struct ContentView: View {
                     Text("マップ")
                 }
                 .tag(1)
-            Text("1")
+            RankVIew()
                 .tabItem {
                     Image(systemName: "list.number")
                     Text("ランキング")

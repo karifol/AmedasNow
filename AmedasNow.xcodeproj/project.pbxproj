@@ -21,6 +21,8 @@
 		C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */; };
 		C4AEB4802C3104B20084B103 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47F2C3104B20084B103 /* PointData.swift */; };
 		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
+		C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27D82C3EAB5D00F9B787 /* RankData.swift */; };
+		C4EB27DB2C3EAEE200F9B787 /* RankVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DA2C3EAEE200F9B787 /* RankVIew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prec1hChartView.swift; sourceTree = "<group>"; };
 		C4AEB47F2C3104B20084B103 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
 		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
+		C4EB27D82C3EAB5D00F9B787 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
+		C4EB27DA2C3EAEE200F9B787 /* RankVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
+				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
@@ -108,6 +113,7 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4AEB4752C3017A10084B103 /* GraphView.swift */,
 				C4AEB4792C302EB40084B103 /* TempChartView.swift */,
+				C4EB27DA2C3EAEE200F9B787 /* RankVIew.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */,
 				C4AEB47B2C302EEA0084B103 /* WindChartView.swift */,
@@ -191,9 +197,11 @@
 			files = (
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
+				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
+				C4EB27DB2C3EAEE200F9B787 /* RankVIew.swift in Sources */,
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
