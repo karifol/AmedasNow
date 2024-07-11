@@ -24,6 +24,7 @@ struct MenueView: View {
             }
             Spacer()
         }
+        .background(.white)
     }
 }
 

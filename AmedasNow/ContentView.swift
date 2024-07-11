@@ -25,7 +25,7 @@ struct ContentView: View {
                     Text("マップ")
                 }
                 .tag(1)
-            RankVIew()
+            RankView()
                 .tabItem {
                     Image(systemName: "list.number")
                     Text("ランキング")
