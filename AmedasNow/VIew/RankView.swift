@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct RankView: View {
+    
+    var rankData = RankData()
+    init(){
+        rankData.serchAmedas()
+    }
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
             HeaderView

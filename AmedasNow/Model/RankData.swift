@@ -6,105 +6,87 @@
 //
 
 import SwiftUI
+import SwiftSoup
+
 
 struct RankItem: Identifiable{
     let id = UUID()
-    let temp: Double
+    let rank: String
+    let pref: String
+    let city: String
+    let name: String
+    let value: String
 }
 
 @Observable class RankData {
 
     // 保持するデータ
-    var dataList: [PointItem] = []
-    var dataDic: [String: [PointItem]] = [:]
+    var dataDic: [String: [RankItem]] = [:]
 
-    // Web API検索用メソッド
-    func serchAmedas(amsid: String) {
-        print("search")
+    func serchAmedas() {
         Task {
-            let latestTimeDate = await searchLatestTime()
-            // リストを初期化
-            dataDic.removeAll()
-            // 10分ずつずらしながら60分前までのデータを取得
-            for i in 0..<6 {
-                let latestTime = Calendar.current.date(byAdding: .minute, value: -10 * i, to: latestTimeDate)!
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyyMMddHHmmss"
-                let latestTimeStr = dateFormatter.string(from: latestTime)
-                await search(amsid: amsid, latestTime: latestTimeStr)
-            }
-            dataList.removeAll()
-            dataList = dataDic[amsid] ?? []
-        }
-    }
-
-    // @MainActorを使いメインスレッドで更新する
-    @MainActor
-    private func searchLatestTime() async -> Date {
-        // リクエストURLの組み立て
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/latest_time.txt")
-        else {
-            return Date()
-        }
-        do {
-            // リクエストURLからダウンロード
-            let (data, _) = try await URLSession.shared.data(from: req_url) // 2024-06-29T12:00:00+09:00
-            let str = String(data: data, encoding: .utf8)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            let latestTime = dateFormatter.date(from: str!)!
-            return latestTime
-
-        } catch(let error) {
-            print("エラーが出ました LatestTimeData")
-            print(error)
-            return Date()
+            await search()
         }
     }
 
     @MainActor
-    private func search(amsid: String, latestTime: String) async {
-        // リクエストURLの組み立て
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/data/map/\(latestTime).json")
+    private func search() async {
+        // 日ランキング
+        guard let req_url = URL(string: "https://www.data.jma.go.jp/obd/stats/data/mdrr/rank_daily/data0713.html")
         else {
             return
         }
-//        print("url: \(req_url)")
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
-            // 受け取ったJSONデータをパースして格納
-            let decoder = JSONDecoder()
-            let result = try decoder.decode(ResultJson.self, from: data)
+            // 受け取ったHTMLをパース
+            let html = String(data: data, encoding: .utf8)
+            let doc: Document = try SwiftSoup.parse(html ?? "")
+            // テーブルを取得
+            let table: Elements = try doc.select("table")
+            // テーブルごとに処理
+            for i in 0..<table.count {
+                // tableのsummary属性を取得
+                let summary = try table.get(i).attr("summary")
+                // テーブルの行を取得
+                let rows: Elements = try table.get(i).select("tr")
+                // テーブルの行ごとに処理
+                var prevRank = ""
+                for j in 0..<rows.count {
+                    // テーブルの列を取得
+                    let cols: Elements = try rows.get(j).select("td")
+                    if cols.count == 0 {
+                        continue
+                    }
+                    var rank = try cols.get(0).text()
+                    if rank == "〃" {
+                        rank = prevRank
+                    }
+                    prevRank = rank
+                    let pref = try cols.get(1).text()
+                    let city = try cols.get(2).text()
+                    let name = try cols.get(3).text()
+                    let value = try cols.get(4).text()
 
-            // 取得しているお菓子を構造体でまとめて管理
-            for (key, item) in result {
-                if let temp = item.temp,
-                let prec1h = item.precipitation1h?.first,
-                let windDirection = item.windDirection,
-                let wind = item.wind{
-                    
-                    // 日付型の文字列をDate型に変換
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyyMMddHHmmss"
-                    let date = dateFormatter.date(from: latestTime)
-                    
-                    let amedasItem = PointItem(
-                        temp: temp[0] ?? 999,
-                        wind: wind[0] ?? 999,
-                        windDirection: windDirection[0] ?? 999,
-                        prec1h: prec1h ?? 999,
-                        date: date ?? Date()
-                    )
-                    dataDic[key, default: []].append(amedasItem)
+                    let item = RankItem(rank: rank, pref: pref, city: city, name: name, value: value)
+                    if dataDic[summary] == nil {
+                        dataDic[summary] = [item]
+                    } else {
+                        dataDic[summary]?.append(item)
+                    }
                 }
                 // sort
-                dataDic[key] = dataDic[key]?.sorted(by: { $0.date < $1.date })
+                dataDic[summary]?.sort { (a, b) -> Bool in
+                    return Int(a.rank)! < Int(b.rank)!
+                }
             }
-            
         } catch(let error) {
             print("エラーが出ました")
             print(error)
         }
     }
 }
+
+//#Preview {
+//    ContentView()
+//}

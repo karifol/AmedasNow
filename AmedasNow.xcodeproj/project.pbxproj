@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C49AF7FE2C420CF600B19399 /* SwiftSoup */; };
 		C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45C2C281A820084B103 /* AmedasNowApp.swift */; };
 		C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45E2C281A820084B103 /* ContentView.swift */; };
 		C4AEB4612C281A830084B103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AEB4602C281A830084B103 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,7 @@
 			);
 			name = AmedasNow;
 			packageProductDependencies = (
+				C49AF7FE2C420CF600B19399 /* SwiftSoup */,
 			);
 			productName = AmedasNow;
 			productReference = C4AEB4592C281A820084B103 /* AmedasNow.app */;
@@ -168,6 +171,7 @@
 			);
 			mainGroup = C4AEB4502C281A820084B103;
 			packageReferences = (
+				C49AF7FD2C420CF600B19399 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = C4AEB45A2C281A820084B103 /* Products */;
 			projectDirPath = "";
@@ -429,6 +433,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C49AF7FD2C420CF600B19399 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C49AF7FE2C420CF600B19399 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C49AF7FD2C420CF600B19399 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4AEB4512C281A820084B103 /* Project object */;
 }
