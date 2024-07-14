@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C49AF7FE2C420CF600B19399 /* SwiftSoup */; };
+		C49AF8012C4223A700B19399 /* RaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8002C4223A700B19399 /* RaderView.swift */; };
+		C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8022C425CE900B19399 /* RaderModel.swift */; };
 		C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45C2C281A820084B103 /* AmedasNowApp.swift */; };
 		C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45E2C281A820084B103 /* ContentView.swift */; };
 		C4AEB4612C281A830084B103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AEB4602C281A830084B103 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C49AF8002C4223A700B19399 /* RaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderView.swift; sourceTree = "<group>"; };
+		C49AF8022C425CE900B19399 /* RaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderModel.swift; sourceTree = "<group>"; };
 		C4AEB4592C281A820084B103 /* AmedasNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmedasNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AEB45C2C281A820084B103 /* AmedasNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmedasNowApp.swift; sourceTree = "<group>"; };
 		C4AEB45E2C281A820084B103 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
+				C49AF8022C425CE900B19399 /* RaderModel.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
@@ -115,6 +120,7 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */,
 				C4AEB4752C3017A10084B103 /* GraphView.swift */,
+				C49AF8002C4223A700B19399 /* RaderView.swift */,
 				C4AEB4792C302EB40084B103 /* TempChartView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */,
@@ -209,6 +215,8 @@
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
+				C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */,
+				C49AF8012C4223A700B19399 /* RaderView.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB47A2C302EB40084B103 /* TempChartView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
@@ -346,6 +354,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "アメダス ナウ";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -360,8 +369,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kairfol.AmedasNow;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hogehoge.amedasApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -385,6 +394,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "アメダス ナウ";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -399,8 +409,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kairfol.AmedasNow;
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hogehoge.amedasApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

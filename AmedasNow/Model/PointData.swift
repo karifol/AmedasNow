@@ -1,12 +1,4 @@
-//
-//  PointData.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/06/30.
-//
-
 import SwiftUI
-
 
 // Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
 struct PointItem: Identifiable{
@@ -36,7 +28,7 @@ struct PointItem: Identifiable{
 
     // Web API検索用メソッド
     func serchAmedas(amsid: String) {
-        print("search")
+        print("PointData.serchAmedas()")
         Task {
             let latestTimeDate = await searchLatestTime()
             // リストを初期化
@@ -90,7 +82,6 @@ struct PointItem: Identifiable{
         else {
             return
         }
-//        print("url: \(req_url)")
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)

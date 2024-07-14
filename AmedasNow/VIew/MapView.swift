@@ -1,10 +1,3 @@
-//
-//  MapView.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/06/23.
-//
-
 import SwiftUI
 import MapKit
 
@@ -14,7 +7,7 @@ struct MapView: View {
     var amedasMapDataList = AmedasMapData(
         amedasTableData: AmedasTableData()
     )
-    
+
     // タップされた地点
     @State private var selectedAmedas: AmedasMapItem?
     // 最新時刻
@@ -71,7 +64,6 @@ struct MapView: View {
 }
 
 extension MapView {
-
     // map
     private var MapView: some View {
         Map(position: $cameraPosition){
@@ -134,6 +126,7 @@ extension MapView {
             }
 
         }
+        .mapStyle(.imagery(elevation: .realistic))
         // 下から少しだけ出す
         .sheet(item: $selectedAmedas) { item in
             VStack{
@@ -228,9 +221,7 @@ extension MapView {
                     amedasMapDataList.serchAmedas(
                         basetime: basetime
                     )
-                    latestTimeData.get()
                 }
-
             } label: {
                 if timeDelta == 120 {
                     Image(systemName: "lessthan")
@@ -251,7 +242,6 @@ extension MapView {
                     amedasMapDataList.serchAmedas(
                         basetime: basetime
                     )
-
                 }
             } label: {
                 if timeDelta == 0 {
@@ -267,7 +257,18 @@ extension MapView {
         .background(.black.opacity(0.5))
         .foregroundColor(.white)
         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-
+        .onAppear(){
+            latestTimeData.get()
+        }
+        .onChange(of: latestTimeData.latestTime){
+            basetimeDate = Calendar.current.date(byAdding: .minute, value: -timeDelta, to: latestTimeData.latestTime) ?? Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let basetime = formatter.string(from: basetimeDate)
+            amedasMapDataList.serchAmedas(
+                basetime: basetime
+            )
+        }
     }
 
 

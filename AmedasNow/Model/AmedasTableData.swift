@@ -1,13 +1,5 @@
-//
-//  AmedasTableData.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/06/24.
-//
-
 import SwiftUI
 
-// Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
 struct AmedasTableItem: Identifiable{
     let id = UUID()
     let amsid: String
@@ -17,9 +9,7 @@ struct AmedasTableItem: Identifiable{
     let type: String
 }
 
-// お菓子データ検索用のクラス
 @Observable class AmedasTableData {
-    // JSONの構造
 
     // JSONのitem内のデータ構造
     struct Item: Codable {
@@ -35,15 +25,12 @@ struct AmedasTableItem: Identifiable{
     // 複数要素
     typealias ResultJson = [String: Item]
 
-
     var amedasDict: [String: AmedasTableItem] = [:]
 
     // Web API検索用メソッド
     func serchAmedasTable() {
-        // Taskは非同期で処理を実行できる
+        print("AmedasTableData.serchAmedasTable()")
         Task {
-            // ここから先は非同期で実行される
-            // 非同期でお菓子を検索する
             await search()
         }
     }
@@ -57,9 +44,6 @@ struct AmedasTableItem: Identifiable{
         else {
             return
         }
-
-        print(req_url)
-
         do {
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)

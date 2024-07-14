@@ -1,10 +1,3 @@
-//
-//  MenueView.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/07/03.
-//
-
 import SwiftUI
 
 struct MenueView: View {
@@ -12,6 +5,11 @@ struct MenueView: View {
         VStack (alignment: .leading, spacing: 0){
             HeaderView
             Spacer()
+            HStack {
+                Spacer()
+                Link("出典 : 雨雲の動き| 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/nowc/#lat:32.856518/lon:135.461426/zoom:7/colordepth:normal/elements:hrpns&slmcs&slmcs_fcst")!)
+                Spacer()
+            }
             HStack {
                 Spacer()
                 Link("出典 : AMeDAS | 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/amedas/")!)

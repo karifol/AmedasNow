@@ -1,10 +1,3 @@
-//
-//  AmedasMapData.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/06/28.
-//
-
 import SwiftUI
 
 struct AmedasMapItem: Identifiable{
@@ -20,7 +13,6 @@ struct AmedasMapItem: Identifiable{
 }
 
 @Observable class AmedasMapData {
-
 
     var amedasTableData: AmedasTableData // 地点テーブルを保持するプロパティ
     // 初期化メソッド
@@ -42,13 +34,9 @@ struct AmedasMapItem: Identifiable{
     var amedasList: [AmedasMapItem] = []
 
     // Web API検索用メソッド
-    func serchAmedas(
-        basetime: String
-    ) {
-        // Taskは非同期で処理を実行できる
+    func serchAmedas(basetime: String) {
+        print("AmedasMapData.serchAmedas()")
         Task {
-            // ここから先は非同期で実行される
-            // 非同期でお菓子を検索する
             await search(
                 basetime: basetime
             )
@@ -91,7 +79,6 @@ struct AmedasMapItem: Identifiable{
             return
         }
         do {
-            print(req_url)
             // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
             // 受け取ったJSONデータをパースして格納

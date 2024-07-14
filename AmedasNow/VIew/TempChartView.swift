@@ -1,10 +1,3 @@
-//
-//  TempChartView.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/06/29.
-//
-
 import SwiftUI
 import Charts
 
