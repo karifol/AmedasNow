@@ -1,8 +1,9 @@
 import SwiftUI
 import MapKit
+import AppTrackingTransparency
 
 struct MapView: View {
-
+    
     // アメダスデータ
     var amedasMapDataList = AmedasMapData(
         amedasTableData: AmedasTableData()
@@ -20,6 +21,30 @@ struct MapView: View {
         center: CLLocationCoordinate2D(latitude: 35.711, longitude: 139.866),
         span: MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
     ))
+    
+    private func requestTrackingPermission() {
+        if #available(iOS 14, *) {
+            DispatchQueue.main.async {
+                ATTrackingManager.requestTrackingAuthorization { status in
+                    switch status {
+                    case .authorized:
+                        print("Tracking authorized")
+                    case .denied:
+                        print("Tracking denied")
+                    case .notDetermined:
+                        print("Tracking not determined")
+                    case .restricted:
+                        print("Tracking restricted")
+                    @unknown default:
+                        print("Unknown tracking status")
+                    }
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+            print("Tracking not available on this iOS version")
+        }
+    }
 
     init(){
         latestTimeData.get()
@@ -59,6 +84,9 @@ struct MapView: View {
                         .offset(y: -50)
                 }
             }
+        }
+        .onAppear(){
+            requestTrackingPermission()
         }
     }
 }

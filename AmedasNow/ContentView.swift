@@ -1,9 +1,9 @@
 import SwiftUI
+import AppTrackingTransparency
 
 struct ContentView: View {
 
     @State var selection: Int = 2
-    @AppStorage("is_init") var isShow = true
 
     var body: some View {
         TabView(selection: $selection) {
@@ -39,17 +39,6 @@ struct ContentView: View {
                 .tag(4)
         }
         .accentColor(.blue)
-        // インストール後の初回表示
-        .alert("\"アメダス ナウ\"が他社のアプリやWebサイトを横断してあなたのアクティビティをトラッキングすることを許可しますか？", isPresented: $isShow) {
-            Button("アプリにトラッキングしないように要求") {
-                isShow = false
-            }
-            Button("許可") {
-                isShow = false
-            }
-        } message: {
-            Text("アプリのバグ修正およびアプリの体験向上のためにユーザー行動データを利用します")
-        }
     }
 }
 
