@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C422C468EA5001347B6 /* SatelliteView.swift */; };
+		C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C442C46914D001347B6 /* SatellilteData.swift */; };
 		C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C49AF7FE2C420CF600B19399 /* SwiftSoup */; };
 		C49AF8012C4223A700B19399 /* RaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8002C4223A700B19399 /* RaderView.swift */; };
 		C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8022C425CE900B19399 /* RaderModel.swift */; };
@@ -24,11 +26,14 @@
 		C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */; };
 		C4AEB4802C3104B20084B103 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47F2C3104B20084B103 /* PointData.swift */; };
 		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
+		C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C71C232C453B5200F36F52 /* MultiMapView.swift */; };
 		C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27D82C3EAB5D00F9B787 /* RankData.swift */; };
 		C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C43E2C422C468EA5001347B6 /* SatelliteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteView.swift; sourceTree = "<group>"; };
+		C43E2C442C46914D001347B6 /* SatellilteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatellilteData.swift; sourceTree = "<group>"; };
 		C49AF8002C4223A700B19399 /* RaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderView.swift; sourceTree = "<group>"; };
 		C49AF8022C425CE900B19399 /* RaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderModel.swift; sourceTree = "<group>"; };
 		C4AEB4592C281A820084B103 /* AmedasNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmedasNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +52,7 @@
 		C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prec1hChartView.swift; sourceTree = "<group>"; };
 		C4AEB47F2C3104B20084B103 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
 		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
+		C4C71C232C453B5200F36F52 /* MultiMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMapView.swift; sourceTree = "<group>"; };
 		C4EB27D82C3EAB5D00F9B787 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +113,7 @@
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C49AF8022C425CE900B19399 /* RaderModel.swift */,
+				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
@@ -120,7 +127,9 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */,
 				C4AEB4752C3017A10084B103 /* GraphView.swift */,
+				C4C71C232C453B5200F36F52 /* MultiMapView.swift */,
 				C49AF8002C4223A700B19399 /* RaderView.swift */,
+				C43E2C422C468EA5001347B6 /* SatelliteView.swift */,
 				C4AEB4792C302EB40084B103 /* TempChartView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */,
@@ -160,7 +169,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					C4AEB4582C281A820084B103 = {
 						CreatedOnToolsVersion = 15.3;
@@ -206,6 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
+				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
+				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
@@ -217,6 +228,7 @@
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */,
 				C49AF8012C4223A700B19399 /* RaderView.swift in Sources */,
+				C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB47A2C302EB40084B103 /* TempChartView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,

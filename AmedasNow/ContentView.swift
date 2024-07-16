@@ -19,7 +19,7 @@ struct ContentView: View {
                     Text("マップ")
                 }
                 .tag(1)
-            RaderView()
+            MultiMapView()
                 .tabItem {
                     Image(systemName: "cloud.heavyrain")
                     Text("レーダー")

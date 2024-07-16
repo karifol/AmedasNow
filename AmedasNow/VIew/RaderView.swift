@@ -17,7 +17,6 @@ struct RaderView: View {
 
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
-            HeaderView // ヘッダー
             ZStack {
                 MapView // Map
                 TimeSliderView // タイムスライダー
@@ -194,7 +193,7 @@ extension RaderView {
         .padding()
         .background(.ultraThinMaterial)
         // 左上に表示
-        .position(x: 50, y: 100)
+        .position(x: 50, y: 160)
     }
 }
 
