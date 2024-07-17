@@ -1,10 +1,3 @@
-//
-//  SatelliteView.swift
-//  AmedasNow
-//
-//  Created by 堀ノ内海斗 on 2024/07/16.
-//
-
 import SwiftUI
 import MapKit
 
@@ -40,22 +33,6 @@ struct SatelliteView: View {
 }
 
 extension SatelliteView {
-    
-    // 20240713065000に9時間足す関数
-    func validTimePlus9(validTime: String) -> String {
-        let year = validTime.prefix(4)
-        let month = validTime.prefix(6).suffix(2)
-        let day = validTime.prefix(8).suffix(2)
-        let hour = validTime.prefix(10).suffix(2)
-        let minute = validTime.prefix(12).suffix(2)
-        let validCalender = Calendar.current.date(from: DateComponents(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute: Int(minute)!, second: 0))!
-        let validTimePlus9 = validCalender.addingTimeInterval(60*60*18)
-        let validTimePlus9String = validTimePlus9.description
-        let day9 = validTimePlus9String.prefix(10).suffix(2)
-        let hour9 = validTimePlus9String.prefix(13).suffix(2)
-        let minute9 = validTimePlus9String.prefix(16).suffix(2)
-        return "\(day9)日\(hour9)時\(minute9)分"
-    }
     
     // Map
     private var MapView: some View {

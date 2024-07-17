@@ -32,61 +32,7 @@ struct RaderView: View {
     }
 }
 
-struct KokudoMapView: UIViewRepresentable {
-    var overlay: MKTileOverlay
-
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: KokudoMapView
-
-        init(_ parent: KokudoMapView) {
-            self.parent = parent
-        }
-
-        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            let renderer = MKTileOverlayRenderer(overlay: overlay)
-            return renderer
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func makeUIView(context: Context) -> MKMapView {
-        return MKMapView()
-    }
-
-    func updateUIView(_ mapView: MKMapView, context: Context) {
-        mapView.delegate = context.coordinator
-
-        let overlays = mapView.overlays
-        mapView.addOverlay(overlay)
-        for overlay in overlays {
-            if overlay is MKTileOverlay {
-                mapView.removeOverlay(overlay)
-            }
-        }
-        // realistic
-        mapView.mapType = .hybrid
-    }
-}
-
 extension RaderView {
-    
-    // 20240713065000に9時間足す関数
-    func validTimePlus9(validTime: String) -> String {
-        let year = validTime.prefix(4)
-        let month = validTime.prefix(6).suffix(2)
-        let day = validTime.prefix(8).suffix(2)
-        let hour = validTime.prefix(10).suffix(2)
-        let minute = validTime.prefix(12).suffix(2)
-        let validCalender = Calendar.current.date(from: DateComponents(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute: Int(minute)!, second: 0))!
-        let validTimePlus9 = validCalender.addingTimeInterval(60*60*18)
-        let validTimePlus9String = validTimePlus9.description
-        let hour9 = validTimePlus9String.prefix(13).suffix(2)
-        let minute9 = validTimePlus9String.prefix(16).suffix(2)
-        return "\(hour9)時\(minute9)分"
-    }
     
     // header
     private var HeaderView: some View {
