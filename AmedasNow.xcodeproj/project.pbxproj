@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C422C468EA5001347B6 /* SatelliteView.swift */; };
 		C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C442C46914D001347B6 /* SatellilteData.swift */; };
+		C43E2C472C47E5BA001347B6 /* WeatherMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C462C47E5BA001347B6 /* WeatherMapView.swift */; };
+		C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C482C47E610001347B6 /* WeatherMapData.swift */; };
 		C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C49AF7FE2C420CF600B19399 /* SwiftSoup */; };
 		C49AF8012C4223A700B19399 /* RaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8002C4223A700B19399 /* RaderView.swift */; };
 		C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8022C425CE900B19399 /* RaderModel.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		C43E2C422C468EA5001347B6 /* SatelliteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteView.swift; sourceTree = "<group>"; };
 		C43E2C442C46914D001347B6 /* SatellilteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatellilteData.swift; sourceTree = "<group>"; };
+		C43E2C462C47E5BA001347B6 /* WeatherMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapView.swift; sourceTree = "<group>"; };
+		C43E2C482C47E610001347B6 /* WeatherMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapData.swift; sourceTree = "<group>"; };
 		C49AF8002C4223A700B19399 /* RaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderView.swift; sourceTree = "<group>"; };
 		C49AF8022C425CE900B19399 /* RaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderModel.swift; sourceTree = "<group>"; };
 		C4AEB4592C281A820084B103 /* AmedasNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmedasNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
+				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C49AF8022C425CE900B19399 /* RaderModel.swift */,
 				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
@@ -130,6 +135,7 @@
 				C4C71C232C453B5200F36F52 /* MultiMapView.swift */,
 				C49AF8002C4223A700B19399 /* RaderView.swift */,
 				C43E2C422C468EA5001347B6 /* SatelliteView.swift */,
+				C43E2C462C47E5BA001347B6 /* WeatherMapView.swift */,
 				C4AEB4792C302EB40084B103 /* TempChartView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C4AEB47D2C30332E0084B103 /* Prec1hChartView.swift */,
@@ -217,11 +223,13 @@
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
 				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
 				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
+				C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */,
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
+				C43E2C472C47E5BA001347B6 /* WeatherMapView.swift in Sources */,
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,

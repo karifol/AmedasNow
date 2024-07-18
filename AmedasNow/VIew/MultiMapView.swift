@@ -15,7 +15,7 @@ struct MultiMapView: View {
                 } else if selectedItem == 1 {
                     SatelliteView()
                 } else if selectedItem == 2 {
-                    SatelliteView()
+                    WeatherMapView()
                 } else {
                     SatelliteView()
                 }
@@ -89,9 +89,33 @@ struct MultiMapView: View {
 }
 
 // レーダー共通
+class CustomTileOverlayRenderer: MKTileOverlayRenderer {
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+        context.setAlpha(0.5) // 半透明に設定
+        super.draw(mapRect, zoomScale: zoomScale, in: context)
+    }
+}
+
 struct KokudoMapView: UIViewRepresentable {
     var overlay: MKTileOverlay
-    var maxZoom: Int = 100
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.addOverlay(overlay)
+        return mapView
+    }
+
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.addOverlay(overlay)
+        // hybrid
+        mapView.mapType = .hybrid
+    }
 
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: KokudoMapView
@@ -101,32 +125,13 @@ struct KokudoMapView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            let renderer = MKTileOverlayRenderer(overlay: overlay)
-            return renderer
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func makeUIView(context: Context) -> MKMapView {
-        return MKMapView()
-    }
-
-    func updateUIView(_ mapView: MKMapView, context: Context) {
-        mapView.delegate = context.coordinator
-
-        let overlays = mapView.overlays
-        mapView.addOverlay(overlay)
-        for overlay in overlays {
             if overlay is MKTileOverlay {
-                mapView.removeOverlay(overlay)
+                let renderer = CustomTileOverlayRenderer(overlay: overlay as! MKTileOverlay)
+//                renderer.alpha =  // 半透明に設定
+                return renderer
             }
+            return MKOverlayRenderer(overlay: overlay)
         }
-
-        // realistic
-        mapView.mapType = .hybrid
     }
 }
 

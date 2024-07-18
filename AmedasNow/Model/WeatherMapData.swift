@@ -1,15 +1,15 @@
 import SwiftUI
 
-struct SatelliteItem: Identifiable{
+struct WeatherMapItem: Identifiable{
     let id = UUID()
     let baseTime: String
     let validTime: String
 }
 
-@Observable class SatelliteData {
+@Observable class WeatherMapData {
 
     var validTimeList: [String] = [] // validtimeのデータリスト
-    var baseTime: String = "" // basetime
+    var baseTime:String = "" // basetime
 
     // json構造
     struct Item: Codable {
@@ -20,7 +20,7 @@ struct SatelliteItem: Identifiable{
     typealias ResultJson = [Item]
 
     func serchRank() {
-        print("SatelliteData.serchRank()")
+        print("WeatherMapData.serchRank()")
         Task {
             await search()
         }
@@ -29,7 +29,7 @@ struct SatelliteItem: Identifiable{
     @MainActor
     private func search() async {
         // 日ランキング
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/himawari/data/satimg/targetTimes_jp.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/wdist/targetTimes.json")
         else {
             return
         }

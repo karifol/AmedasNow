@@ -27,7 +27,6 @@ struct RaderView: View {
             validTimeString = validTimePlus9(validTime: raderData.validTimeList[0])
             let validTime = raderData.validTimeList[0] // 20240713065000
             overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(validTime)/none/\(validTime)/surf/hrpns/{z}/{x}/{y}.png")
-            validTimeString = validTimePlus9(validTime: validTime)
         }
     }
 }
