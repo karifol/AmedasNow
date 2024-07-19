@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 
-struct WeatherMapView: View {
+struct TempMapView: View {
     
     @State private var validTimeString: String = ""
     var weatherMapData = WeatherMapData()
@@ -12,7 +12,7 @@ struct WeatherMapView: View {
     // タイムスライダー
     @State private var timeSliderValue: Double = 0
     // レーダータイル画像
-    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/20240716101730/jp/20240716101730/REP/ETC/{z}/{x}/{y}.jpg")
+    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/20240718080000/none/20240718120000/surf/temp/6/56/24.png")
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
@@ -26,12 +26,12 @@ struct WeatherMapView: View {
             validTimeString = validTimePlus9(validTime: weatherMapData.validTimeList[ weatherMapData.validTimeList.count - 1])
             let validTime = weatherMapData.validTimeList[0] // 20240713065000
             let basetime = weatherMapData.baseTime
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/wm/{z}/{x}/{y}.png")
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/temp/{z}/{x}/{y}.png")
         }
     }
 }
 
-extension WeatherMapView {
+extension TempMapView {
     
     // Map
     private var MapView: some View {
@@ -59,7 +59,7 @@ extension WeatherMapView {
                             let time = 10 - Int(newState)
                             let validTime = weatherMapData.validTimeList[time] // 20240713065000
                             let basetime = weatherMapData.baseTime
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/wm/{z}/{x}/{y}.png")
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/temp/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }
                         .onAppear(){

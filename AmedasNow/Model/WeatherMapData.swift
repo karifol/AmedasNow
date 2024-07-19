@@ -15,6 +15,7 @@ struct WeatherMapItem: Identifiable{
     struct Item: Codable {
         let basetime: String?
         let validtime: String?
+        let elements: [String]?
     }
     // 複数要素
     typealias ResultJson = [Item]

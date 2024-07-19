@@ -8,6 +8,9 @@ struct SatelliteView: View {
     init(){
         satelliteData.serchRank()
     }
+    
+    // 衛星の種類
+    @State private var element: String = "SND/ETC"
 
     // タイムスライダー
     @State private var timeSliderValue: Double = 863
@@ -19,14 +22,104 @@ struct SatelliteView: View {
         VStack (alignment: .leading, spacing: 0){
             ZStack {
                 MapView // Map
+                VStack {
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack {
+                            Button{
+                                element = "B03/ALBD"
+                            } label: {
+                                Text("可視")
+                                    .padding(5)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .background(.yellow)
+                                    .clipShape(Capsule())
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(.white, lineWidth: 2)
+                                    )
+                            }
+                            .padding(3)
+                            Button{
+                                element = "B13/TBB"
+                            } label: {
+                                Text("赤外")
+                                    .padding(5)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .background(.red)
+                                    .clipShape(Capsule())
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(.white, lineWidth: 2)
+                                    )
+                            }
+                            Button{
+                                element = "B08/TBB"
+                            } label: {
+                                Text("水蒸気")
+                                    .padding(5)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .background(.blue)
+                                    .clipShape(Capsule())
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(.white, lineWidth: 2)
+                                    )
+                            }
+                            Button{
+                                element = "REP/ETC"
+                            } label: {
+                                Text("トゥルーカラー")
+                                    .padding(5)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .background(.green)
+                                    .clipShape(Capsule())
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(.white, lineWidth: 2)
+                                    )
+                            }
+                            Button{
+                                element = "SND/ETC"
+                            } label: {
+                                Text("雲頂強調")
+                                    .padding(5)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .background(.orange)
+                                    .clipShape(Capsule())
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(.white, lineWidth: 2)
+                                    )
+                            }
+                        }
+                        
+                        
+                    }
+                    .padding(.vertical)
+                    .background(.gray.opacity(0.01))
+                    .padding(.top, 50)
+                    Spacer()
+                }
                 TimeSliderView // タイムスライダー
             }
+
         }
         .onChange(of: satelliteData.validTimeList) { oldState, newState in
             validTimeString = validTimePlus9(validTime: satelliteData.validTimeList[0])
             let validTime = satelliteData.validTimeList[0] // 20240713065000
             print(validTime)
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/REP/ETC/{z}/{x}/{y}.jpg")
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
+        }
+        .onChange(of: element){ oldState, newState in
+            validTimeString = validTimePlus9(validTime: satelliteData.validTimeList[0])
+            let validTime = satelliteData.validTimeList[0] // 20240713065000
+            print(validTime)
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
         }
     }
 }
@@ -58,7 +151,7 @@ extension SatelliteView {
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = 863 - Int(newState)
                             let validTime = satelliteData.validTimeList[time] // 20240713065000
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/REP/ETC/{z}/{x}/{y}.jpg")
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }
                         .onAppear(){

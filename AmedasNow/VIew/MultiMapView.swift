@@ -16,12 +16,16 @@ struct MultiMapView: View {
                     SatelliteView()
                 } else if selectedItem == 2 {
                     WeatherMapView()
+                } else if selectedItem == 3 {
+                    TempMapView()
+                } else if selectedItem == 4 {
+                    PrecMapView()
                 } else {
                     SatelliteView()
                 }
 
                 VStack {
-                    ScrollView(.horizontal){
+                    ScrollView(.horizontal, showsIndicators: false){
                         HStack{
                             Button {
                                 selectedItem = 0
@@ -63,13 +67,31 @@ struct MultiMapView: View {
                                 selectedItem = 2
                             } label: {
                                 HStack {
-                                    Image(systemName: "sun.horizon.fill")
-                                    Text("天気分布予想")
+                                    Image(systemName: "sun.max.fill")
+                                    Text("予想")
                                 }
                                 .padding(5)
                                 .bold()
                                 .foregroundColor(.white)
                                 .background(.orange)
+                                .clipShape(Capsule())
+                                .overlay(
+                                    Capsule()
+                                        .stroke(.white, lineWidth: 2)
+                                )
+                            }
+                            .padding(3)
+                            Button {
+                                selectedItem = 3
+                            } label: {
+                                HStack {
+                                    Image(systemName: "thermometer.high")
+                                    Text("海")
+                                }
+                                .padding(5)
+                                .bold()
+                                .foregroundColor(.white)
+                                .background(.red)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
