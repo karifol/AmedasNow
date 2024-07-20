@@ -30,6 +30,7 @@ struct SatelliteView: View {
                             } label: {
                                 Text("可視")
                                     .padding(5)
+                                    .padding(.horizontal)
                                     .bold()
                                     .foregroundColor(.white)
                                     .background(.yellow)
@@ -45,6 +46,7 @@ struct SatelliteView: View {
                             } label: {
                                 Text("赤外")
                                     .padding(5)
+                                    .padding(.horizontal)
                                     .bold()
                                     .foregroundColor(.white)
                                     .background(.red)
@@ -59,6 +61,7 @@ struct SatelliteView: View {
                             } label: {
                                 Text("水蒸気")
                                     .padding(5)
+                                    .padding(.horizontal)
                                     .bold()
                                     .foregroundColor(.white)
                                     .background(.blue)
@@ -73,6 +76,7 @@ struct SatelliteView: View {
                             } label: {
                                 Text("トゥルーカラー")
                                     .padding(5)
+                                    .padding(.horizontal)
                                     .bold()
                                     .foregroundColor(.white)
                                     .background(.green)
@@ -87,6 +91,7 @@ struct SatelliteView: View {
                             } label: {
                                 Text("雲頂強調")
                                     .padding(5)
+                                    .padding(.horizontal)
                                     .bold()
                                     .foregroundColor(.white)
                                     .background(.orange)

@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct WeatherMapItem: Identifiable{
+struct SeaMapItem: Identifiable{
     let id = UUID()
     let baseTime: String
     let validTime: String
 }
 
-@Observable class WeatherMapData {
+@Observable class SeaMapData {
 
     var validTimeList: [String] = [] // validtimeのデータリスト
     var baseTime:String = "" // basetime
@@ -30,7 +30,7 @@ struct WeatherMapItem: Identifiable{
     @MainActor
     private func search() async {
         // 日ランキング
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/wdist/targetTimes.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/targetTimes.json")
         else {
             return
         }
@@ -52,8 +52,6 @@ struct WeatherMapItem: Identifiable{
             }
             // ソート
             validTimeList.sort()
-            // 1以降のデータを取得
-            validTimeList = Array(validTimeList.dropFirst())
         } catch(let error) {
             print("エラーが出ました")
             print(error)

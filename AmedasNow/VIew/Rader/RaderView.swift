@@ -138,7 +138,7 @@ extension RaderView {
         .padding()
         .background(.ultraThinMaterial)
         // 左上に表示
-        .position(x: 50, y: 160)
+        .position(x: 50, y: 200)
     }
 }
 

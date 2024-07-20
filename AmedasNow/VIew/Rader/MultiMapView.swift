@@ -15,11 +15,9 @@ struct MultiMapView: View {
                 } else if selectedItem == 1 {
                     SatelliteView()
                 } else if selectedItem == 2 {
-                    WeatherMapView()
+                    ForecastMapView()
                 } else if selectedItem == 3 {
-                    TempMapView()
-                } else if selectedItem == 4 {
-                    PrecMapView()
+                    SeaMapView()
                 } else {
                     SatelliteView()
                 }
@@ -50,7 +48,7 @@ struct MultiMapView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "camera")
-                                    Text("衛星")
+                                    Text("衛星画像")
                                 }
                                 .padding(5)
                                 .bold()
@@ -68,7 +66,7 @@ struct MultiMapView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "sun.max.fill")
-                                    Text("予想")
+                                    Text("天気予想")
                                 }
                                 .padding(5)
                                 .bold()
@@ -85,13 +83,13 @@ struct MultiMapView: View {
                                 selectedItem = 3
                             } label: {
                                 HStack {
-                                    Image(systemName: "thermometer.high")
-                                    Text("海")
+                                    Image(systemName: "water.waves")
+                                    Text("海上予想")
                                 }
                                 .padding(5)
                                 .bold()
                                 .foregroundColor(.white)
-                                .background(.red)
+                                .background(.blue)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
@@ -149,7 +147,6 @@ struct KokudoMapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if overlay is MKTileOverlay {
                 let renderer = CustomTileOverlayRenderer(overlay: overlay as! MKTileOverlay)
-//                renderer.alpha =  // 半透明に設定
                 return renderer
             }
             return MKOverlayRenderer(overlay: overlay)
