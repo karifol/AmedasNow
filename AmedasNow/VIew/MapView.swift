@@ -16,6 +16,7 @@ struct MapView: View {
     @State private var timeDelta: Int = 0 // 最新時刻からの差分
     @State private var basetimeDate: Date = Date()
 
+
     // Mapのカメラポジション
     @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 35.711, longitude: 139.866),
@@ -46,12 +47,12 @@ struct MapView: View {
         }
     }
 
-    init(){
-        latestTimeData.get()
-        amedasMapDataList.serchAmedas(
-            basetime: "999"
-        )
-    }
+//    init(){
+//        latestTimeData.get()
+//        amedasMapDataList.serchAmedas(
+//            basetime: "999"
+//        )
+//    }
 
     // 要素のpicker
     @State private var selectedElement = "temp"
@@ -101,125 +102,57 @@ extension MapView {
                     longitude: amedas.lon
                 )
                 Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
-                    VStack {
-                        if selectedElement == "wind" {
-                            // 矢印
-                            Button(){
-                                selectedAmedas = amedas
-                            } label: {
-                                Image(systemName: "arrow.up")
-                                    .resizable()
-                                    .frame(width: 34, height: 24)
-                                    .bold()
-                                    .foregroundColor(.black)
-                                    .overlay(
-                                        Image(systemName: "arrow.up")
-                                            .resizable()
-                                            .frame(width: 30, height: 20)
-                                            .foregroundColor(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                            .offset(y: -1)
-                                    )
-                                    .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
-                            }
-                        } else if selectedElement == "temp" {
-                            Button(){
-                                selectedAmedas = amedas
-                            } label: {
-                                Circle()
-                                    .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                    .opacity(0.5)
-                                    .frame(width: 20, height: 20)
-                                    .overlay(
-                                        Circle().stroke(Color.black, lineWidth: 1)
-                                    )
-                            }
-
-                        } else if selectedElement == "prec1h" {
-                            Button(){
-                                selectedAmedas = amedas
-                            } label: {
-                                Circle()
-                                    .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
-                                    .frame(width: 20, height: 20)
-                                    .overlay(
-                                        amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
-                                    )
-                            }
+                    if selectedElement == "wind" {
+                        // 矢印
+                        Button(){
+                            selectedAmedas = amedas
+                        } label: {
+                            Image(systemName: "arrow.up")
+                                .resizable()
+                                .frame(width: 34, height: 24)
+                                .bold()
+                                .foregroundColor(.black)
+                                .overlay(
+                                    Image(systemName: "arrow.up")
+                                        .resizable()
+                                        .frame(width: 30, height: 20)
+                                        .foregroundColor(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                        .offset(y: -1)
+                                )
+                                .rotationEffect(.degrees(amedas.windDirection * 22.5 + 180))
+                        }
+                    } else if selectedElement == "temp" {
+                        Button(){
+                            selectedAmedas = amedas
+                        } label: {
+                            Circle()
+                                .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                .opacity(0.5)
+                                .frame(width: 20, height: 20)
+                                .overlay(
+                                    Circle().stroke(Color.black, lineWidth: 1)
+                                )
                         }
 
+                    } else if selectedElement == "prec1h" {
+                        Button(){
+                            selectedAmedas = amedas
+                        } label: {
+                            Circle()
+                                .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
+                                .frame(width: 20, height: 20)
+                                .overlay(
+                                    amedas.prec1h == 0 ? nil : Circle().stroke(Color.black, lineWidth: 1)
+                                )
+                        }
                     }
-                    .padding()
-                    .foregroundColor(.blue)
                 }
             }
 
         }
         .mapStyle(.imagery(elevation: .realistic))
-        // 下から少しだけ出す
         .sheet(item: $selectedAmedas) { item in
-            VStack{
-                Text(item.name)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .bold()
-                    .padding()
-                HStack(spacing: 20){
-                    VStack{
-                        HStack{
-                            Image(systemName: "thermometer")
-                            Text("気温")
-                        }
-                            .font(.title2)
-                            .foregroundColor(.red)
-                        // 少数第一位まで表示
-                        HStack {
-                            Text(String(format: "%.1f", item.temp))
-                                .font(.title2)
-                            Text("℃")
-                        }
-                    }
-
-                    VStack{
-                        HStack{
-                            Image(systemName: "wind")
-                            Text("風速")
-                        }
-                            .font(.title2)
-                            .foregroundColor(.green)
-                        // 少数第一位まで表示
-                        HStack {
-                            Text(String(format: "%.1f", item.wind))
-                                .font(.title2)
-                            Text("m/s")
-                        }
-                    }
-
-                    VStack{
-                        HStack{
-                            Image(systemName: "drop")
-                            Text("降水量")
-                        }
-                            .font(.title2)
-                            .foregroundColor(.blue)
-                        // 少数第一位まで表示
-                        HStack {
-                            Text(String(format: "%.1f", item.prec1h))
-                                .font(.title2)
-                            Text("mm/h")
-                        }
-                    }
-                }
-            }
-            .frame(width: 300, height: 400)
-            .background(Color.white)
-            .cornerRadius(20)
-            .presentationDetents([
-                .medium,
-                .large,
-                // 高さ
-                .height(200),
-                // 画面に対する割合
-                .fraction(0.8)
-            ])
+            SheetView(item: item)
         }
     }
 
@@ -280,11 +213,11 @@ extension MapView {
                 }
             }
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .frame(maxWidth: .infinity)
         .padding(.vertical, 10)
         .background(.black.opacity(0.5))
         .foregroundColor(.white)
-        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+        .font(.title)
         .onAppear(){
             latestTimeData.get()
         }
@@ -293,6 +226,7 @@ extension MapView {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyyMMddHHmmss"
             let basetime = formatter.string(from: basetimeDate)
+            print(basetime)
             amedasMapDataList.serchAmedas(
                 basetime: basetime
             )
@@ -300,7 +234,7 @@ extension MapView {
     }
 
 
-    // // timeslider
+     // timeslider
     struct TimesliderValueView: View {
         var date: Date
         var delta: Int
@@ -473,7 +407,76 @@ extension MapView {
         } else {
             return Color.black
         }
+    }
+    
+     // sheet
+    struct SheetView: View {
+        var item: AmedasMapItem
+        var body: some View {
+           VStack{
+                Text(item.name)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .bold()
+                    .padding()
+                HStack(spacing: 20){
+                    VStack{
+                        HStack{
+                            Image(systemName: "thermometer")
+                            Text("気温")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.red)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.temp))
+                                .font(.title2)
+                            Text("℃")
+                        }
+                    }
 
+                    VStack{
+                        HStack{
+                            Image(systemName: "wind")
+                            Text("風速")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.green)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.wind))
+                                .font(.title2)
+                            Text("m/s")
+                        }
+                    }
+
+                    VStack{
+                        HStack{
+                            Image(systemName: "drop")
+                            Text("降水量")
+                        }
+                            .font(.title2)
+                            .foregroundColor(.blue)
+                        // 少数第一位まで表示
+                        HStack {
+                            Text(String(format: "%.1f", item.prec1h))
+                                .font(.title2)
+                            Text("mm/h")
+                        }
+                    }
+                }
+            }
+            .frame(width: 300, height: 400)
+            .background(Color.white)
+            .cornerRadius(20)
+            .presentationDetents([
+                .medium,
+                .large,
+                // 高さ
+                .height(200),
+                // 画面に対する割合
+                .fraction(0.8)
+            ])
+        }
     }
 }
 
@@ -493,5 +496,5 @@ extension Color {
 }
 
 #Preview {
-    ContentView()
+    MapView()
 }

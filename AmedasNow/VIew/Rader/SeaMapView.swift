@@ -30,8 +30,8 @@ struct SeaMapView: View {
                                     .padding(5)
                                     .padding(.horizontal)
                                     .bold()
-                                    .foregroundColor(.white)
-                                    .background(.blue)
+                                    .foregroundColor(element == "wavh" ? .blue : .white)
+                                    .background(element == "wavh" ? .white : .blue)
                                     .clipShape(Capsule())
                                     .overlay(
                                         Capsule()
@@ -46,8 +46,8 @@ struct SeaMapView: View {
                                     .padding(5)
                                     .padding(.horizontal)
                                     .bold()
-                                    .foregroundColor(.white)
-                                    .background(.yellow)
+                                    .foregroundColor(element == "vis" ? .yellow : .white)
+                                    .background(element == "vis" ? .white : .yellow)
                                     .clipShape(Capsule())
                                     .overlay(
                                         Capsule()
@@ -61,8 +61,8 @@ struct SeaMapView: View {
                                     .padding(5)
                                     .padding(.horizontal)
                                     .bold()
-                                    .foregroundColor(.white)
-                                    .background(.orange)
+                                    .foregroundColor(element == "wm" ? .orange : .white)
+                                    .background(element == "wm" ? .white : .orange)
                                     .clipShape(Capsule())
                                     .overlay(
                                         Capsule()

@@ -15,17 +15,10 @@ struct RankView: View {
                     Text(rankData.time)
                         .font(.title2)
                         .fontWeight(.bold)
-                    Button {
-                        rankData.serchRank()
-                    } label: {
-                        Text("更新")
-                        Image(systemName: "arrow.clockwise")
-                            .font(.title2)
-                    }
                 }
                 .padding(.top)
-                
-                ForEach(rankData.titleList, id: \.self) { key in
+                LazyVStack{
+                    ForEach(rankData.titleList, id: \.self) { key in
                     // テーブルタイトル
                     HStack {
                         Text(key)
@@ -71,6 +64,8 @@ struct RankView: View {
                     .font(.caption)
                     .padding()
             }
+                }
+                
         }
     }
 }
@@ -91,5 +86,5 @@ extension RankView {
 }
 
 #Preview {
-    ContentView()
+    RankView()
 }

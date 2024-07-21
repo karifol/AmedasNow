@@ -10,6 +10,8 @@
 		C419D38C2C4B59190096F750 /* ForecastMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419D38B2C4B59190096F750 /* ForecastMapView.swift */; };
 		C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419D38F2C4B5F850096F750 /* SeaMapView.swift */; };
 		C419D3922C4B66D60096F750 /* SeaMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419D3912C4B66D60096F750 /* SeaMapData.swift */; };
+		C419D3942C4BFA020096F750 /* WeatherMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419D3932C4BFA020096F750 /* WeatherMapView.swift */; };
+		C419D3962C4BFD500096F750 /* ForecastMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C419D3952C4BFD500096F750 /* ForecastMapData.swift */; };
 		C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C422C468EA5001347B6 /* SatelliteView.swift */; };
 		C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C442C46914D001347B6 /* SatellilteData.swift */; };
 		C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C482C47E610001347B6 /* WeatherMapData.swift */; };
@@ -39,6 +41,8 @@
 		C419D38B2C4B59190096F750 /* ForecastMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastMapView.swift; sourceTree = "<group>"; };
 		C419D38F2C4B5F850096F750 /* SeaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaMapView.swift; sourceTree = "<group>"; };
 		C419D3912C4B66D60096F750 /* SeaMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaMapData.swift; sourceTree = "<group>"; };
+		C419D3932C4BFA020096F750 /* WeatherMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapView.swift; sourceTree = "<group>"; };
+		C419D3952C4BFD500096F750 /* ForecastMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastMapData.swift; sourceTree = "<group>"; };
 		C43E2C422C468EA5001347B6 /* SatelliteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteView.swift; sourceTree = "<group>"; };
 		C43E2C442C46914D001347B6 /* SatellilteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatellilteData.swift; sourceTree = "<group>"; };
 		C43E2C482C47E610001347B6 /* WeatherMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapData.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
 				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
+				C419D3952C4BFD500096F750 /* ForecastMapData.swift */,
 				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C49AF8022C425CE900B19399 /* RaderModel.swift */,
@@ -161,6 +166,7 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
+				C419D3932C4BFA020096F750 /* WeatherMapView.swift */,
 				C419D38E2C4B5F180096F750 /* Rader */,
 			);
 			path = VIew;
@@ -242,12 +248,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C419D3942C4BFA020096F750 /* WeatherMapView.swift in Sources */,
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
 				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
 				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
 				C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */,
 				C419D3922C4B66D60096F750 /* SeaMapData.swift in Sources */,
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
+				C419D3962C4BFD500096F750 /* ForecastMapData.swift in Sources */,
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,

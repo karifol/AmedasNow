@@ -13,7 +13,7 @@ struct RaderView: View {
     @State private var timeSliderValue: Double = 36.0
 
     // レーダータイル画像
-    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/20240713064500/none/20240713064500/surf/hrpns/{z}/{x}/{y}.png")
+    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/20240721024500/none/20240721024500/surf/hrpns/{z}/{x}/{y}.png")
 
     var body: some View {
         VStack (alignment: .leading, spacing: 0){

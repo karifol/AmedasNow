@@ -10,15 +10,16 @@ struct MultiMapView: View {
             HeaderView
             ZStack {
                 // 選択されたMap
-                if selectedItem == 0 {
+                switch selectedItem {
+                case 0:
                     RaderView()
-                } else if selectedItem == 1 {
+                case 1:
                     SatelliteView()
-                } else if selectedItem == 2 {
+                case 2:
                     ForecastMapView()
-                } else if selectedItem == 3 {
+                case 3:
                     SeaMapView()
-                } else {
+                default:
                     SatelliteView()
                 }
 
@@ -34,8 +35,8 @@ struct MultiMapView: View {
                                 }
                                 .padding(5)
                                 .bold()
-                                .foregroundColor(.white)
-                                .background(.blue)
+                                .foregroundColor(selectedItem == 0 ? .blue : .white)
+                                .background(selectedItem == 0 ? .white : .blue)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
@@ -52,8 +53,8 @@ struct MultiMapView: View {
                                 }
                                 .padding(5)
                                 .bold()
-                                .foregroundColor(.white)
-                                .background(.green)
+                                .foregroundColor(selectedItem == 1 ? .green : .white)
+                                .background(selectedItem == 1 ? .white : .green)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
@@ -70,8 +71,8 @@ struct MultiMapView: View {
                                 }
                                 .padding(5)
                                 .bold()
-                                .foregroundColor(.white)
-                                .background(.orange)
+                                .foregroundColor(selectedItem == 2 ? .orange : .white)
+                                .background(selectedItem == 2 ? .white : .orange)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
@@ -88,8 +89,8 @@ struct MultiMapView: View {
                                 }
                                 .padding(5)
                                 .bold()
-                                .foregroundColor(.white)
-                                .background(.blue)
+                                .foregroundColor(selectedItem == 3 ? .blue : .white)
+                                .background(selectedItem == 3 ? .white : .blue)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()

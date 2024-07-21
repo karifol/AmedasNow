@@ -8,12 +8,6 @@ struct GraphView: View {
 
     // アメダス地点データ
     var amedasTableData = AmedasTableData()
-    init(){
-        amedasTableData.serchAmedasTable()
-        pointData.serchAmedas(
-            amsid: "44132"
-        )
-    }
 
     var latestTimeData = LatestTimeData()
 
@@ -86,6 +80,12 @@ struct GraphView: View {
                 }
                 .padding(.horizontal, 20)
             }
+        }
+        .onAppear(){
+            amedasTableData.serchAmedasTable()
+            pointData.serchAmedas(
+                amsid: "44132"
+            )
         }
     }
 }

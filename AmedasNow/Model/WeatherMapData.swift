@@ -1,27 +1,29 @@
-import SwiftUI
 
-struct WeatherMapItem: Identifiable{
-    let id = UUID()
-    let baseTime: String
-    let validTime: String
-}
+import SwiftUI
 
 @Observable class WeatherMapData {
 
-    var validTimeList: [String] = [] // validtimeのデータリスト
-    var baseTime:String = "" // basetime
+    var nearNow: String = ""
+    var nearFt24: String = ""
+    var nearFt48: String = ""
+    var asiaNow: String = ""
+    var asiaFt24: String = ""
+    var asiaFt48: String = ""
 
     // json構造
-    struct Item: Codable {
-        let basetime: String?
-        let validtime: String?
-        let elements: [String]?
+    struct Near: Codable {
+        let now: [String]
+        let ft24: [String]
+        let ft48: [String]
     }
-    // 複数要素
-    typealias ResultJson = [Item]
+    struct Root: Codable {
+        let near: Near
+        let asia: Near
+    }
 
-    func serchRank() {
-        print("WeatherMapData.serchRank()")
+
+    func serchData() {
+        print("WeatherMapData.serchData()")
         Task {
             await search()
         }
@@ -30,7 +32,7 @@ struct WeatherMapItem: Identifiable{
     @MainActor
     private func search() async {
         // 日ランキング
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/wdist/targetTimes.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/weather_map/data/list.json")
         else {
             return
         }
@@ -39,24 +41,16 @@ struct WeatherMapItem: Identifiable{
             let (data, _) = try await URLSession.shared.data(from: req_url)
             // 受け取ったJSONをパース
             let decoder = JSONDecoder()
-            let result = try decoder.decode(ResultJson.self, from: data)
+            let result = try decoder.decode(Root.self, from: data)
             // データを取り出す
-            validTimeList.removeAll()
-            for item in result {
-                if let validtime = item.validtime {
-                    validTimeList.append(validtime)
-                }
-                if let basetime = item.basetime {
-                    baseTime = basetime
-                }
-            }
-            // ソート
-            validTimeList.sort()
-            // 1以降のデータを取得
-            validTimeList = Array(validTimeList.dropFirst())
-        } catch(let error) {
-            print("エラーが出ました")
-            print(error)
+            nearNow = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.near.now[0])"
+            nearFt24 = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.near.ft24[0])"
+            nearFt48 = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.near.ft48[0])"
+            asiaNow = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.asia.now[0])"
+            asiaFt24 = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.asia.ft24[0])"
+            asiaFt48 = "https://www.jma.go.jp/bosai/weather_map/data/png/\(result.asia.ft48[0])"
+        } catch {
+            print("JSONデコードエラー: \(error)")
         }
     }
 }

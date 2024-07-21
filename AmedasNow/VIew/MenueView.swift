@@ -1,18 +1,85 @@
 import SwiftUI
 
 struct MenueView: View {
+    
+    @State var selected:Int = 0
+    
     var body: some View {
-        VStack (alignment: .leading, spacing: 0){
+        VStack (alignment: .center, spacing: 0){
+            if (selected == 0) {
+                MenueContentView
+            } else if (selected == 1){
+                WeatherMapView()
+            }
+        }
+        .background(.white)
+        .onAppear(){
+            selected = 0
+        }
+    }
+}
+
+extension MenueView {
+    // header
+    private var HeaderView: some View {
+        HStack {
+            Image(systemName: "menucard")
+            Text("メニュー")
+        }
+        .foregroundStyle(.white)
+        .font(.title2)
+        .frame(maxWidth: .infinity)
+        .background(.blue)
+        .fontWeight(.bold)
+    }
+    
+    private var MenueContentView: some View {
+        VStack{
             HeaderView
-            Spacer()
-            HStack{
-                Spacer()
-                Text("出典")
+            ScrollView{
+                Text("メニュー")
                     .font(.title2)
+                    .padding(.top)
+                Divider()
+                    .padding(10)
+                Button {
+                    selected = 1
+                } label: {
+                    HStack {
+                        Image(systemName: "photo")
+                        Text("天気図")
+                    }
+                    .font(.title2)
+                    .foregroundStyle(.white)
+                    .bold()
+                    .padding(.horizontal, 100)
+                    .padding(.vertical, 10)
+                    .background(.green)
+                }
+                .padding(3)
+                SourceView
+            }
+
+        }
+    }
+    
+    // 出典
+    private var SourceView: some View {
+        VStack (alignment: .center, spacing: 5){
+            Text("出典")
+                .font(.title2)
+            Divider()
+                .padding(5)
+            HStack {
+                Spacer()
+                Link("出典 : 天気図 | 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/weather_map/")!)
                 Spacer()
             }
-            Divider()
-                .padding(10)
+            HStack {
+                Spacer()
+                Link("出典 : 気象衛星ひまわり | 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/map.html#5/34.5/137/&elem=vis&contents=himawari")!)
+                Spacer()
+            }
             HStack {
                 Spacer()
                 Link("出典 : 海上分布予報 | 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/umimesh/#lat:37.002553/lon:138.999023/zoom:5/colordepth:deep/elements:weather")!)
@@ -38,24 +105,8 @@ struct MenueView: View {
                 Link("出典 : 毎日の全国観測値ランキング | 気象庁", destination: URL(string: "https://www.data.jma.go.jp/obd/stats/data/mdrr/rank_daily/index.html")!)
                 Spacer()
             }
-            Spacer()
         }
-        .background(.white)
-    }
-}
 
-extension MenueView {
-    // header
-    private var HeaderView: some View {
-        HStack {
-            Image(systemName: "menucard")
-            Text("メニュー")
-        }
-        .foregroundStyle(.white)
-        .font(.title2)
-        .frame(maxWidth: .infinity)
-        .background(.blue)
-        .fontWeight(.bold)
     }
 }
 

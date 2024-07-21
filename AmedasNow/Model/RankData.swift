@@ -70,20 +70,35 @@ struct RankItem: Identifiable{
             self.time = time
             // テーブルを取得
             let table: Elements = try doc.select("table")
+            // テーブルが存在するか確認
+            guard !table.isEmpty else {
+                print("テーブルが見つかりませんでした")
+                return
+            }
+
             // テーブルごとに処理
             for i in 0..<table.count {
                 // tableのsummary属性を取得
                 let summary = try table.get(i).attr("summary")
-                titleList.append(summary)
+                
                 // テーブルの行を取得
                 let rows: Elements = try table.get(i).select("tr")
+                
                 // テーブルの行ごとに処理
                 var prevRank = ""
                 // リセット
+                
+                if (rows.count == 0) {
+                    continue
+                }
                 dataDic[summary] = []
                 for j in 0..<rows.count {
                     // テーブルの列を取得
                     let cols: Elements = try rows.get(j).select("td")
+
+                    guard cols.count >= 5 else {
+                        continue
+                    }
                     if cols.count == 0 {
                         continue
                     }
@@ -104,6 +119,7 @@ struct RankItem: Identifiable{
                         dataDic[summary]?.append(item)
                     }
                 }
+                titleList.append(summary)
                 // sort
                 dataDic[summary]?.sort { (a, b) -> Bool in
                     return Int(a.rank)! < Int(b.rank)!

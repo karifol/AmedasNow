@@ -4,7 +4,7 @@ import MapKit
 struct ForecastMapView: View {
     
     @State private var validTimeString: String = ""
-    var weatherMapData = WeatherMapData()
+    var weatherMapData = ForecastMapData()
     init(){
         weatherMapData.serchRank()
     }
@@ -128,7 +128,7 @@ extension ForecastMapView {
                         .font(.title2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .padding(.top)
-                    Slider(value: $timeSliderValue, in: 0...10, step: 1)
+                    Slider(value: $timeSliderValue, in: 0...9, step: 1)
                         .padding(.horizontal)
                         .frame(width: 300, height: 40)
                         // 変わったら表示
