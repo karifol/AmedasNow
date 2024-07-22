@@ -8,8 +8,8 @@ struct MultiMapView: View {
     var body: some View {
         VStack (spacing: 0){
             HeaderView
+
             ZStack {
-                // 選択されたMap
                 switch selectedItem {
                 case 0:
                     RaderView()
@@ -112,7 +112,7 @@ struct MultiMapView: View {
 // レーダー共通
 class CustomTileOverlayRenderer: MKTileOverlayRenderer {
     override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
-        context.setAlpha(0.5) // 半透明に設定
+        context.setAlpha(0.7)
         super.draw(mapRect, zoomScale: zoomScale, in: context)
     }
 }

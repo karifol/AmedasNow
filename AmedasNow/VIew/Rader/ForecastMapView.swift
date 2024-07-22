@@ -68,8 +68,8 @@ extension ForecastMapView {
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(.white)
-                            .background(.orange)
+                            .foregroundColor(element == "wm" ? .orange: .white)
+                            .background(element == "wm" ? .white: .orange)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()
@@ -84,8 +84,8 @@ extension ForecastMapView {
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(.white)
-                            .background(.red)
+                            .foregroundColor(element == "temp" ? .red: .white)
+                            .background(element == "temp" ? .white: .red)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()
@@ -99,8 +99,8 @@ extension ForecastMapView {
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(.white)
-                            .background(.blue)
+                            .foregroundColor(element == "r3" ? .blue: .white)
+                            .background(element == "r3" ? .white: .blue)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()

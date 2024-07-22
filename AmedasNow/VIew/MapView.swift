@@ -83,6 +83,15 @@ struct MapView: View {
                     // time slider
                     TimesliderView
                         .offset(y: -50)
+                    HStack{
+                        Spacer()
+                        Text("タップで詳細表示")
+                            .foregroundStyle(.white)
+                            .bold()
+                        Spacer()
+                    }
+                    .offset(y:-50)
+
                 }
             }
         }
