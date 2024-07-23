@@ -97,6 +97,11 @@ extension MenueView {
             }
             HStack {
                 Spacer()
+                Link("出典 : 紫外線情報（分布図）| 気象庁", destination: URL(string: "https://www.data.jma.go.jp/gmd/env/uvindex/index.html")!)
+                Spacer()
+            }
+            HStack {
+                Spacer()
                 Link("出典 : AMeDAS | 気象庁", destination: URL(string: "https://www.jma.go.jp/bosai/amedas/")!)
                 Spacer()
             }

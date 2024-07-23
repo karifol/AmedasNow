@@ -1,10 +1,10 @@
 import SwiftUI
 import MapKit
 
-struct RaderView: View {
+struct ThunderNccView: View {
 
-    @State private var validTimeString: String = ""
     var raderData = RaderData()
+    @State private var validTimeString: String = ""
     @State private var validTime: String = ""
     @State private var baseTime: String = ""
     @State private var isFcst: Bool = false
@@ -32,7 +32,7 @@ struct RaderView: View {
     }
 }
 
-extension RaderView {
+extension ThunderNccView {
     
     // header
     private var HeaderView: some View {
@@ -153,14 +153,7 @@ extension RaderView {
 }
 
 extension Color {
-    static var rader80 = Color(red: 200 / 255, green: 73 / 255,  blue: 145 / 255)
-    static var rader50 = Color(red: 255 / 255, green: 101 / 255, blue: 73 / 255)
-    static var rader30 = Color(red: 255 / 255, green: 179 / 255, blue: 73 / 255)
-    static var rader20 = Color(red: 255 / 255, green: 247 / 255, blue: 74 / 255)
-    static var rader10 = Color(red:  74 / 255, green: 118 / 255, blue: 255 / 255)
-    static var rader5  = Color(red:  97 / 255, green: 171 / 255, blue: 255 / 255)
-    static var rader1  = Color(red: 185 / 255, green: 222 / 255, blue: 255 / 255)
-    static var rader0  = Color(red: 246 / 255, green: 245 / 255, blue: 255 / 255)
+
 }
 
 #Preview {

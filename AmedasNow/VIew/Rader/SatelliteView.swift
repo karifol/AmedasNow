@@ -5,18 +5,16 @@ struct SatelliteView: View {
     
     @State private var validTimeString: String = ""
     var satelliteData = SatelliteData()
-    init(){
-        satelliteData.serchRank()
-    }
     
     // 衛星の種類
     @State private var element: String = "SND/ETC"
+    @State private var validTime: String = ""
 
     // タイムスライダー
     @State private var timeSliderValue: Double = 863
     
     // レーダータイル画像
-    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/20240716101730/jp/20240716101730/REP/ETC/{z}/{x}/{y}.jpg")
+    @State private var overlay = MKTileOverlay(urlTemplate: "")
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
@@ -116,14 +114,10 @@ struct SatelliteView: View {
         }
         .onChange(of: satelliteData.validTimeList) { oldState, newState in
             validTimeString = validTimePlus9(validTime: satelliteData.validTimeList[0])
-            let validTime = satelliteData.validTimeList[0] // 20240713065000
-            print(validTime)
+            validTime = satelliteData.validTimeList[0] // 20240713065000
             overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
         }
         .onChange(of: element){ oldState, newState in
-            validTimeString = validTimePlus9(validTime: satelliteData.validTimeList[0])
-            let validTime = satelliteData.validTimeList[0] // 20240713065000
-            print(validTime)
             overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
         }
     }
@@ -155,7 +149,7 @@ extension SatelliteView {
                         // 変わったら表示
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = 863 - Int(newState)
-                            let validTime = satelliteData.validTimeList[time] // 20240713065000
+                            validTime = satelliteData.validTimeList[time] // 20240713065000
                             overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/\(validTime)/jp/\(validTime)/\(element)/{z}/{x}/{y}.jpg")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }

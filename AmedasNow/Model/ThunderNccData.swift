@@ -1,15 +1,8 @@
 import SwiftUI
 
-struct SeaMapItem: Identifiable{
-    let id = UUID()
-    let baseTime: String
-    let validTime: String
-}
-
-@Observable class SeaMapData {
+@Observable class TunderNccData {
 
     var validTimeList: [String] = [] // validtimeのデータリスト
-    var baseTime:String = "" // basetime
 
     // json構造
     struct Item: Codable {
@@ -21,7 +14,7 @@ struct SeaMapItem: Identifiable{
     typealias ResultJson = [Item]
 
     func serchRank() {
-        print("SeaMapData.serchRank()")
+        print("ThunderNccData.serchRank()")
         Task {
             await search()
         }
@@ -29,8 +22,7 @@ struct SeaMapItem: Identifiable{
 
     @MainActor
     private func search() async {
-        // 日ランキング
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/targetTimes.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N3.json")
         else {
             return
         }
@@ -42,21 +34,20 @@ struct SeaMapItem: Identifiable{
             let result = try decoder.decode(ResultJson.self, from: data)
             // データを取り出す
             validTimeList.removeAll()
+            baseTimeList.removeAll()
             for item in result {
                 if let validtime = item.validtime {
-                    validTimeList.append(validtime)
-                }
-                if let basetime = item.basetime {
-                    baseTime = basetime
+                    // thns という文字列がelementsに含まれているか
+                    if let elements = item.elements {
+                        if elements.contains("thns") {
+                            validTimeList.append(validtime)
+                        }
+                    }
                 }
             }
-            // ソート
-            validTimeList.sort()
         } catch(let error) {
             print("エラーが出ました")
             print(error)
         }
     }
 }
-
-

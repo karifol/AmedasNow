@@ -12,13 +12,15 @@ struct MultiMapView: View {
             ZStack {
                 switch selectedItem {
                 case 0:
-                    RaderView()
+                    RainCloudView()
                 case 1:
                     SatelliteView()
                 case 2:
                     ForecastMapView()
                 case 3:
                     SeaMapView()
+                case 4:
+                    UVView()
                 default:
                     SatelliteView()
                 }
@@ -31,7 +33,7 @@ struct MultiMapView: View {
                             } label: {
                                 HStack {
                                     Image(systemName: "cloud.heavyrain")
-                                    Text("雨雲レーダー")
+                                    Text("雨雲の動き")
                                 }
                                 .padding(5)
                                 .bold()
@@ -91,6 +93,24 @@ struct MultiMapView: View {
                                 .bold()
                                 .foregroundColor(selectedItem == 3 ? .blue : .white)
                                 .background(selectedItem == 3 ? .white : .blue)
+                                .clipShape(Capsule())
+                                .overlay(
+                                    Capsule()
+                                        .stroke(.white, lineWidth: 2)
+                                )
+                            }
+                            .padding(3)
+                            Button {
+                                selectedItem = 4
+                            } label: {
+                                HStack {
+                                    Image(systemName: "headlight.low.beam.fill")
+                                    Text("紫外線予想")
+                                }
+                                .padding(5)
+                                .bold()
+                                .foregroundColor(selectedItem == 4 ? .red : .white)
+                                .background(selectedItem == 4 ? .white : .red)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()

@@ -5,16 +5,15 @@ struct ForecastMapView: View {
     
     @State private var validTimeString: String = ""
     var weatherMapData = ForecastMapData()
-    init(){
-        weatherMapData.serchRank()
-    }
 
     // 予想の種類
     @State private var element: String = "wm"
+    @State private var validTime: String = ""
+    @State private var baseTime: String = ""
     // タイムスライダー
     @State private var timeSliderValue: Double = 0
     // レーダータイル画像
-    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/himawari/data/satimg/20240716101730/jp/20240716101730/REP/ETC/{z}/{x}/{y}.jpg")
+    @State private var overlay = MKTileOverlay(urlTemplate: "")
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
@@ -33,15 +32,12 @@ struct ForecastMapView: View {
         }
         .onChange(of: weatherMapData.validTimeList) { oldState, newState in
             validTimeString = validTimePlus9(validTime: weatherMapData.validTimeList[0])
-            let validTime = weatherMapData.validTimeList[0] // 20240713065000
-            let basetime = weatherMapData.baseTime
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+            validTime = weatherMapData.validTimeList[0] // 20240713065000
+            baseTime = weatherMapData.baseTime
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
         }
         .onChange(of: element) { oldState, newState in
-            validTimeString = validTimePlus9(validTime: weatherMapData.validTimeList[0])
-            let validTime = weatherMapData.validTimeList[0] // 20240713065000
-            let basetime = weatherMapData.baseTime
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
         }
     }
 }
@@ -134,9 +130,8 @@ extension ForecastMapView {
                         // 変わったら表示
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = Int(newState)
-                            let validTime = weatherMapData.validTimeList[time] // 20240713065000
-                            let basetime = weatherMapData.baseTime
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+                            validTime = weatherMapData.validTimeList[time] // 20240713065000
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/wdist/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }
                         .onAppear(){

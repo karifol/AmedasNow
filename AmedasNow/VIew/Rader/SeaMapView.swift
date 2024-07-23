@@ -5,16 +5,15 @@ struct SeaMapView: View {
     
     @State private var validTimeString: String = ""
     var seaMapData = SeaMapData()
-    init(){
-        seaMapData.serchRank()
-    }
 
     // 予想の種類
     @State private var element: String = "wavh"
+    @State private var validTime: String = ""
+    @State private var baseTime: String = ""
     // タイムスライダー
     @State private var timeSliderValue: Double = 0
     // レーダータイル画像
-    @State private var overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/20240720000000/none/20240720060000/surf/w/{z}/{x}/{y}.png")
+    @State private var overlay = MKTileOverlay(urlTemplate: "")
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
@@ -89,19 +88,14 @@ struct SeaMapView: View {
                 TimeSliderView // タイムスライダー
             }
         }
-        .onChange(of: seaMapData.validTimeList) { oldState, newState in
-            // 最後の値を取る
+        .onChange(of: seaMapData.validTimeList) {
             validTimeString = validTimePlus9(validTime: seaMapData.validTimeList[0])
-            let validTime = seaMapData.validTimeList[0] // 20240713065000
-            let basetime = seaMapData.baseTime
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+            validTime = seaMapData.validTimeList[0] // 20240713065000
+            baseTime = seaMapData.baseTime
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
         }
-        .onChange(of: element) { oldState, newState in
-            // 最後の値を取る
-            validTimeString = validTimePlus9(validTime: seaMapData.validTimeList[0])
-            let validTime = seaMapData.validTimeList[0] // 20240713065000
-            let basetime = seaMapData.baseTime
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+        .onChange(of: element) {
+            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
         }
     }
 }
@@ -132,9 +126,9 @@ extension SeaMapView {
                         // 変わったら表示
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = Int(newState)
-                            let validTime = seaMapData.validTimeList[time] // 20240713065000
-                            let basetime = seaMapData.baseTime
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(basetime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
+                            validTime = seaMapData.validTimeList[time] // 20240713065000
+                            baseTime = seaMapData.baseTime
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/umimesh/\(baseTime)/none/\(validTime)/surf/\(element)/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }
                         .onAppear(){

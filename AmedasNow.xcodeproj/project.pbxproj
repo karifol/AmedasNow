@@ -33,6 +33,11 @@
 		C4AEB4802C3104B20084B103 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47F2C3104B20084B103 /* PointData.swift */; };
 		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
 		C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C71C232C453B5200F36F52 /* MultiMapView.swift */; };
+		C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E812C4F3EDC007DA59E /* UVView.swift */; };
+		C4E22E842C4F413F007DA59E /* UVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E832C4F413F007DA59E /* UVData.swift */; };
+		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
+		C4E22E882C4FCAD5007DA59E /* ThunderNccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */; };
+		C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */; };
 		C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27D82C3EAB5D00F9B787 /* RankData.swift */; };
 		C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +70,11 @@
 		C4AEB47F2C3104B20084B103 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
 		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
 		C4C71C232C453B5200F36F52 /* MultiMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMapView.swift; sourceTree = "<group>"; };
+		C4E22E812C4F3EDC007DA59E /* UVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVView.swift; sourceTree = "<group>"; };
+		C4E22E832C4F413F007DA59E /* UVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVData.swift; sourceTree = "<group>"; };
+		C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCloudView.swift; sourceTree = "<group>"; };
+		C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderNccView.swift; sourceTree = "<group>"; };
+		C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderNccData.swift; sourceTree = "<group>"; };
 		C4EB27D82C3EAB5D00F9B787 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +107,9 @@
 			children = (
 				C4C71C232C453B5200F36F52 /* MultiMapView.swift */,
 				C49AF8002C4223A700B19399 /* RaderView.swift */,
+				C4E22E812C4F3EDC007DA59E /* UVView.swift */,
+				C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */,
+				C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */,
 				C419D38F2C4B5F850096F750 /* SeaMapView.swift */,
 				C419D38B2C4B59190096F750 /* ForecastMapView.swift */,
 				C43E2C422C468EA5001347B6 /* SatelliteView.swift */,
@@ -151,6 +164,8 @@
 				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C49AF8022C425CE900B19399 /* RaderModel.swift */,
+				C4E22E832C4F413F007DA59E /* UVData.swift */,
+				C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */,
 				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
@@ -250,6 +265,7 @@
 			files = (
 				C419D3942C4BFA020096F750 /* WeatherMapView.swift in Sources */,
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
+				C4E22E842C4F413F007DA59E /* UVData.swift in Sources */,
 				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
 				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
 				C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */,
@@ -260,14 +276,18 @@
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
+				C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */,
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
+				C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */,
 				C419D38C2C4B59190096F750 /* ForecastMapView.swift in Sources */,
 				C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */,
 				C49AF8012C4223A700B19399 /* RaderView.swift in Sources */,
+				C4E22E882C4FCAD5007DA59E /* ThunderNccView.swift in Sources */,
+				C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */,
 				C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB47A2C302EB40084B103 /* TempChartView.swift in Sources */,
