@@ -13,6 +13,8 @@ struct RainCloudView: View {
                     RaderView()
                 } else if (content == 1){
                     ThunderNccView()
+                } else if (content == 2){
+                    TornadoNccView()
                 }
             }
         }

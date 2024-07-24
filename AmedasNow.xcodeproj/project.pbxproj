@@ -38,6 +38,8 @@
 		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
 		C4E22E882C4FCAD5007DA59E /* ThunderNccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */; };
 		C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */; };
+		C4E22E8C2C51183C007DA59E /* TornadoNccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */; };
+		C4E22E8E2C5119C2007DA59E /* TornadoNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */; };
 		C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27D82C3EAB5D00F9B787 /* RankData.swift */; };
 		C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCloudView.swift; sourceTree = "<group>"; };
 		C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderNccView.swift; sourceTree = "<group>"; };
 		C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderNccData.swift; sourceTree = "<group>"; };
+		C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoNccView.swift; sourceTree = "<group>"; };
+		C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoNccData.swift; sourceTree = "<group>"; };
 		C4EB27D82C3EAB5D00F9B787 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +114,7 @@
 				C4E22E812C4F3EDC007DA59E /* UVView.swift */,
 				C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */,
 				C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */,
+				C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */,
 				C419D38F2C4B5F850096F750 /* SeaMapView.swift */,
 				C419D38B2C4B59190096F750 /* ForecastMapView.swift */,
 				C43E2C422C468EA5001347B6 /* SatelliteView.swift */,
@@ -166,6 +171,7 @@
 				C49AF8022C425CE900B19399 /* RaderModel.swift */,
 				C4E22E832C4F413F007DA59E /* UVData.swift */,
 				C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */,
+				C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */,
 				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
@@ -283,6 +289,7 @@
 				C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */,
+				C4E22E8E2C5119C2007DA59E /* TornadoNccData.swift in Sources */,
 				C419D38C2C4B59190096F750 /* ForecastMapView.swift in Sources */,
 				C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */,
 				C49AF8012C4223A700B19399 /* RaderView.swift in Sources */,
@@ -291,6 +298,7 @@
 				C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
 				C4AEB47A2C302EB40084B103 /* TempChartView.swift in Sources */,
+				C4E22E8C2C51183C007DA59E /* TornadoNccView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
 				C4AEB4742C2EF2740084B103 /* AmedasMapData.swift in Sources */,
 			);

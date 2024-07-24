@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 
-struct ThunderNccView: View {
+struct TornadoNccView: View {
 
     var data = ThunderNccData()
     @State private var validTimeString: String = ""
@@ -27,13 +27,13 @@ struct ThunderNccView: View {
                 validTimeString = validTimePlus9(validTime: data.validTimeList[17])
                 validTime = data.validTimeList[17]
                 baseTime = data.baseTimeList[17]
-                overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/thns/{z}/{x}/{y}.png")
+                overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/trns/{z}/{x}/{y}.png")
             }
         }
     }
 }
 
-extension ThunderNccView {
+extension TornadoNccView {
     
     // header
     private var HeaderView: some View {
@@ -75,7 +75,7 @@ extension ThunderNccView {
                             let time = Int(newState)
                             validTime = data.validTimeList[time]
                             baseTime = data.baseTimeList[time]
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/thns/{z}/{x}/{y}.png")
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/trns/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
                         }
                         .onAppear(){
@@ -91,28 +91,18 @@ extension ThunderNccView {
     // 凡例
     private var LegendView: some View {
         VStack {
-            Text("雷活動度")
+            Text("竜巻発生確度")
                 .font(.caption2)
             HStack {
                 VStack(spacing: 0){
                     Rectangle()
-                        .foregroundColor(Color.thn4)
+                        .foregroundColor(Color.trn2)
                         .frame(width: 15, height: 15)
                     Rectangle()
-                        .foregroundColor(Color.thn3)
-                        .frame(width: 15, height: 15)
-                    Rectangle()
-                        .foregroundColor(Color.thn2)
-                        .frame(width: 15, height: 15)
-                    Rectangle()
-                        .foregroundColor(Color.thn1)
+                        .foregroundColor(Color.trn1)
                         .frame(width: 15, height: 15)
                 }
                 VStack(spacing: 0){
-                    Text("4")
-                        .frame(width: 15, height: 15)
-                    Text("3")
-                        .frame(width: 15, height: 15)
                     Text("2")
                         .frame(width: 15, height: 15)
                     Text("1")
@@ -129,10 +119,8 @@ extension ThunderNccView {
 }
 
 extension Color {
-    static var thn4 = Color(red: 200 / 255, green:   0 / 255,  blue: 255 / 255)
-    static var thn3 = Color(red: 255 / 255, green:  40 / 255,  blue:   1 / 255)
-    static var thn2 = Color(red: 255 / 255, green: 170 / 255,  blue:   2 / 255)
-    static var thn1 = Color(red: 255 / 255, green: 245 / 255,  blue:   4 / 255)
+    static var trn2 = Color(red: 255 / 255, green:  40 / 255,  blue:   1 / 255)
+    static var trn1 = Color(red: 250 / 255, green: 245 / 255,  blue:   4 / 255)
 }
 
 #Preview {

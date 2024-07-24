@@ -24,10 +24,12 @@ struct RaderView: View {
             }
         }
         .onChange(of: raderData.validTimeList) {
-            validTimeString = validTimePlus9(validTime: raderData.validTimeList[0])
-            validTime = raderData.validTimeList[0] // 20240713065000
-            baseTime = raderData.baseTimeList[0]
-            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/hrpns/{z}/{x}/{y}.png")
+            if raderData.validTimeList.count > 2 {
+                validTimeString = validTimePlus9(validTime: raderData.validTimeList[36])
+                validTime = raderData.validTimeList[36] // 20240713065000
+                baseTime = raderData.baseTimeList[36]
+                overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/hrpns/{z}/{x}/{y}.png")
+            }
         }
     }
 }

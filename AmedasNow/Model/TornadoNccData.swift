@@ -1,6 +1,7 @@
+import Foundation
 import SwiftUI
 
-@Observable class ThunderNccData {
+@Observable class TornadoNccData {
 
     var validTimeList: [String] = ["dummy", "dummy"] // validtimeのデータリスト
     var baseTimeList: [String] = ["dummy", "dummy"] // basetimeのデータリスト
@@ -15,7 +16,7 @@ import SwiftUI
     typealias ResultJson = [Item]
 
     func serchRank() {
-        print("ThunderNccData.serchRank()")
+        print("TornadoNccData.serchRank()")
         Task {
             await search()
         }
@@ -40,14 +41,14 @@ import SwiftUI
                 if let validtime = item.validtime {
                     // thns という文字列がelementsに含まれているか
                     if let elements = item.elements {
-                        if elements.contains("thns") {
+                        if elements.contains("trns") {
                             validTimeList.append(validtime)
                         }
                     }
                 }
                 if let basetime = item.basetime {
                     if let elements = item.elements {
-                        if elements.contains("thns") {
+                        if elements.contains("trns") {
                             baseTimeList.append(basetime)
                         }
                     }
