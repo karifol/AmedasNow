@@ -1,9 +1,9 @@
 import SwiftUI
 import MapKit
 
-struct ThunderNccView: View {
-
-    var data = ThunderNccData()
+struct PrecNccView: View {
+   
+    var data = PrecNccData()
     @State private var validTimeString: String = ""
     @State private var validTime: String = ""
     @State private var baseTime: String = ""
@@ -30,13 +30,14 @@ struct ThunderNccView: View {
                 validTime = data.validTimeList[latestTimeIndex]
                 baseTime = data.baseTimeList[latestTimeIndex]
                 timeSliderValue = Double(latestTimeIndex)
-                overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/thns/{z}/{x}/{y}.png")
+                overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/hrpns/{z}/{x}/{y}.png")
             }
         }
     }
 }
 
-extension ThunderNccView {
+extension PrecNccView {
+    
     // header
     private var HeaderView: some View {
         HStack {
@@ -49,7 +50,7 @@ extension ThunderNccView {
         .background(.blue)
         .fontWeight(.bold)
     }
-
+    
     // Map
     private var MapView: some View {
         VStack {
@@ -57,7 +58,7 @@ extension ThunderNccView {
                 .statusBar(hidden: false)
         }
     }
-
+    
     // タイムスライダー
     private var TimeSliderView: some View {
         VStack {
@@ -82,7 +83,7 @@ extension ThunderNccView {
                             .foregroundColor(isFcst ? .red: .black)
                         Spacer()
                         Button {
-                            if timeSliderValue < Double(data.validTimeList.count - 1){
+                            if timeSliderValue < 48{
                                 timeSliderValue += 1
                             }
                         } label: {
@@ -94,15 +95,16 @@ extension ThunderNccView {
                     }
                     .padding(.top)
                     .frame(width: 350)
-                    Slider(value: $timeSliderValue, in: 0...Double(data.validTimeList.count - 1), step: 1)
+
+                    Slider(value: $timeSliderValue, in: 0...48, step: 1)
                         .padding(.horizontal)
                         .frame(width: 300, height: 40)
                         // 変わったら表示
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = Int(newState)
-                            validTime = data.validTimeList[time]
+                            validTime = data.validTimeList[time] // 20240713065000
                             baseTime = data.baseTimeList[time]
-                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/thns/{z}/{x}/{y}.png")
+                            overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/hrpns/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
                             if time > data.latestTimeIndex {
                                 isFcst = true
@@ -124,29 +126,47 @@ extension ThunderNccView {
     // 凡例
     private var LegendView: some View {
         VStack {
-            Text("雷活動度")
+            Text("mm/h")
                 .font(.caption2)
             HStack {
                 VStack(spacing: 0){
                     Rectangle()
-                        .foregroundColor(Color.thn4)
+                        .foregroundColor(Color.rader80)
                         .frame(width: 15, height: 15)
                     Rectangle()
-                        .foregroundColor(Color.thn3)
+                        .foregroundColor(Color.rader50)
                         .frame(width: 15, height: 15)
                     Rectangle()
-                        .foregroundColor(Color.thn2)
+                        .foregroundColor(Color.rader30)
                         .frame(width: 15, height: 15)
                     Rectangle()
-                        .foregroundColor(Color.thn1)
+                        .foregroundColor(Color.rader20)
+                        .frame(width: 15, height: 15)
+                    Rectangle()
+                        .foregroundColor(Color.rader10)
+                        .frame(width: 15, height: 15)
+                    Rectangle()
+                        .foregroundColor(Color.rader5)
+                        .frame(width: 15, height: 15)
+                    Rectangle()
+                        .foregroundColor(Color.rader1)
+                        .frame(width: 15, height: 15)
+                    Rectangle()
+                        .foregroundColor(Color.rader0)
                         .frame(width: 15, height: 15)
                 }
                 VStack(spacing: 0){
-                    Text("4")
+                    Text("80")
                         .frame(width: 15, height: 15)
-                    Text("3")
+                    Text("50")
                         .frame(width: 15, height: 15)
-                    Text("2")
+                    Text("30")
+                        .frame(width: 15, height: 15)
+                    Text("20")
+                        .frame(width: 15, height: 15)
+                    Text("10")
+                        .frame(width: 15, height: 15)
+                    Text("5")
                         .frame(width: 15, height: 15)
                     Text("1")
                         .frame(width: 15, height: 15)
@@ -161,10 +181,14 @@ extension ThunderNccView {
 }
 
 extension Color {
-    static var thn4 = Color(red: 200 / 255, green:   0 / 255,  blue: 255 / 255)
-    static var thn3 = Color(red: 255 / 255, green:  40 / 255,  blue:   1 / 255)
-    static var thn2 = Color(red: 255 / 255, green: 170 / 255,  blue:   2 / 255)
-    static var thn1 = Color(red: 255 / 255, green: 245 / 255,  blue:   4 / 255)
+    static var rader80 = Color(red: 200 / 255, green: 73 / 255,  blue: 145 / 255)
+    static var rader50 = Color(red: 255 / 255, green: 101 / 255, blue: 73 / 255)
+    static var rader30 = Color(red: 255 / 255, green: 179 / 255, blue: 73 / 255)
+    static var rader20 = Color(red: 255 / 255, green: 247 / 255, blue: 74 / 255)
+    static var rader10 = Color(red:  74 / 255, green: 118 / 255, blue: 255 / 255)
+    static var rader5  = Color(red:  97 / 255, green: 171 / 255, blue: 255 / 255)
+    static var rader1  = Color(red: 185 / 255, green: 222 / 255, blue: 255 / 255)
+    static var rader0  = Color(red: 246 / 255, green: 245 / 255, blue: 255 / 255)
 }
 
 #Preview {

@@ -1,16 +1,10 @@
 import SwiftUI
 
-struct RaderItem: Identifiable{
-    let id = UUID()
-    let baseTime: String
-    let validTime: String
-}
+@Observable class PrecNccData {
 
-@Observable class RaderData {
-
-    var validTimeList: [String] = [] // validtimeのデータリスト
-    var baseTimeList: [String] = [] // basetimeのデータリスト
-    var typeList: [Int] = []
+    var validTimeList: [String] = ["dummy", "dummy"] // validtimeのデータリスト
+    var baseTimeList: [String] = ["dummy", "dummy"] // basetimeのデータリスト
+    var latestTimeIndex: Int = -1
 
     // json構造
     struct Item: Codable {
@@ -21,7 +15,7 @@ struct RaderItem: Identifiable{
     typealias ResultJson = [Item]
 
     func serchRank() {
-        print("RaderData.serchRank()")
+        print("PrecNccData.serchRank()")
         Task {
             await searchObs()
             await searchFcst()
@@ -45,7 +39,7 @@ struct RaderItem: Identifiable{
             // データを取り出す
             validTimeList.removeAll()
             baseTimeList.removeAll()
-            typeList.removeAll()
+            latestTimeIndex = -1
             for item in result {
                 if let validtime = item.validtime {
                     validTimeList.append(validtime)
@@ -53,7 +47,7 @@ struct RaderItem: Identifiable{
                 if let basetime = item.basetime {
                     baseTimeList.append(basetime)
                 }
-                typeList.append(0)
+                latestTimeIndex += 1
             }
         } catch(let error) {
             print("エラーが出ました")
@@ -82,9 +76,7 @@ struct RaderItem: Identifiable{
                 if let basetime = item.basetime {
                     baseTimeList.append(basetime)
                 }
-                typeList.append(1)
             }
-            typeList.sort()
             baseTimeList.sort()
             validTimeList.sort()
 

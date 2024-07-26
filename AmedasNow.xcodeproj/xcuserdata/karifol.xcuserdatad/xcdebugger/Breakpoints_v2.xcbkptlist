@@ -14,8 +14,8 @@
             filePath = "AmedasNow/VIew/Rader/ForecastMapView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "LegendPrecView"
             landmarkType = "24">
          </BreakpointContent>
@@ -34,6 +34,52 @@
             endingLineNumber = "80"
             landmarkName = "HeaderView"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87F6F333-D2F4-46AF-A4BC-083901A7CC43"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmedasNow/Model/TornadoNccData.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "search()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "87F6F333-D2F4-46AF-A4BC-083901A7CC43 - 968b77e3bff55bbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for AmedasNow.TornadoNccData.search() async -&gt; ()"
+                  moduleName = "AmedasNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karifol/dev/AmedasNow/AmedasNow/Model/TornadoNccData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64">
+               </Location>
+               <Location
+                  uuid = "87F6F333-D2F4-46AF-A4BC-083901A7CC43 - dcb6b8910980f4b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for AmedasNow.TornadoNccData.search() async -&gt; ()"
+                  moduleName = "AmedasNow"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karifol/dev/AmedasNow/AmedasNow/Model/TornadoNccData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

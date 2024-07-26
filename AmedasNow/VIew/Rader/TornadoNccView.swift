@@ -3,13 +3,14 @@ import MapKit
 
 struct TornadoNccView: View {
 
-    var data = ThunderNccData()
+    var data = TornadoNccData()
     @State private var validTimeString: String = ""
     @State private var validTime: String = ""
     @State private var baseTime: String = ""
-
+    @State private var isFcst: Bool = false
+    
     // タイムスライダー
-    @State private var timeSliderValue: Double = 17
+    @State private var timeSliderValue: Double = 0
 
     // レーダータイル画像
     @State private var overlay = MKTileOverlay(urlTemplate: "")
@@ -24,9 +25,11 @@ struct TornadoNccView: View {
         }
         .onChange(of: data.validTimeList) {
             if data.validTimeList.count > 2 {
-                validTimeString = validTimePlus9(validTime: data.validTimeList[17])
-                validTime = data.validTimeList[17]
-                baseTime = data.baseTimeList[17]
+                let latestTimeIndex = data.latestTimeIndex
+                validTimeString = validTimePlus9(validTime: data.validTimeList[latestTimeIndex])
+                validTime = data.validTimeList[latestTimeIndex]
+                baseTime = data.baseTimeList[latestTimeIndex]
+                timeSliderValue = Double(latestTimeIndex)
                 overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/trns/{z}/{x}/{y}.png")
             }
         }
@@ -62,11 +65,36 @@ extension TornadoNccView {
             Spacer()
             HStack {
                 VStack {
-                    Text(validTimeString)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.top)
-                        .foregroundColor(.black)
+                    HStack{
+                        Button {
+                            if timeSliderValue > 0{
+                                timeSliderValue -= 1
+                            }
+                        } label: {
+                            Image(systemName: "lessthan")
+                                .foregroundColor(.black)
+                                .bold()
+                        }
+                        .padding(.horizontal, 20)
+                        Spacer()
+                        Text(validTimeString)
+                            .font(.title2)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(isFcst ? .red: .black)
+                        Spacer()
+                        Button {
+                            if timeSliderValue < Double(data.validTimeList.count - 1){
+                                timeSliderValue += 1
+                            }
+                        } label: {
+                            Image(systemName: "greaterthan")
+                                .foregroundColor(.black)
+                                .bold()
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    .padding(.top)
+                    .frame(width: 350)
                     Slider(value: $timeSliderValue, in: 0...Double(data.validTimeList.count - 1), step: 1)
                         .padding(.horizontal)
                         .frame(width: 300, height: 40)
@@ -77,6 +105,12 @@ extension TornadoNccView {
                             baseTime = data.baseTimeList[time]
                             overlay = MKTileOverlay(urlTemplate: "https://www.jma.go.jp/bosai/jmatile/data/nowc/\(baseTime)/none/\(validTime)/surf/trns/{z}/{x}/{y}.png")
                             validTimeString = validTimePlus9(validTime: validTime)
+                            if time > data.latestTimeIndex {
+                                isFcst = true
+                                validTimeString += "[予測]"
+                            } else {
+                                isFcst = false
+                            }
                         }
                         .onAppear(){
                             data.serchRank()

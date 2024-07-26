@@ -42,21 +42,21 @@ extension MenueView {
                     .padding(.top)
                 Divider()
                     .padding(10)
-                Button {
-                    selected = 1
-                } label: {
-                    HStack {
-                        Image(systemName: "photo")
-                        Text("天気図")
-                    }
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .bold()
-                    .padding(.horizontal, 100)
-                    .padding(.vertical, 10)
-                    .background(.green)
-                }
-                .padding(3)
+//                Button {
+//                    selected = 1
+//                } label: {
+//                    HStack {
+//                        Image(systemName: "photo")
+//                        Text("天気図")
+//                    }
+//                    .font(.title2)
+//                    .foregroundStyle(.white)
+//                    .bold()
+//                    .padding(.horizontal, 100)
+//                    .padding(.vertical, 10)
+//                    .background(.green)
+//                }
+//                .padding(3)
                 SourceView
             }
 

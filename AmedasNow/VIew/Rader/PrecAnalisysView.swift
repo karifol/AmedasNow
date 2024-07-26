@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 
-struct RainCloudView: View {
+struct PrecAnalisysView: View {
     
     @State private var content: Int = 0
 
@@ -10,11 +10,11 @@ struct RainCloudView: View {
             ZStack {
                 MenueView.zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                 if (content == 0) {
-                    PrecNccView()
+                    PrecAnalisys1hView()
                 } else if (content == 1){
-                    ThunderNccView()
+                    PrecAnalisys3hView()
                 } else if (content == 2){
-                    TornadoNccView()
+                    PrecAnalisys24hView()
                 }
             }
         }
@@ -22,7 +22,7 @@ struct RainCloudView: View {
     }
 }
 
-extension RainCloudView {
+extension PrecAnalisysView {
     // メニュー
     private var MenueView: some View {
         VStack {
@@ -31,12 +31,12 @@ extension RainCloudView {
                     Button{
                         content = 0
                     } label: {
-                        Text("降水ナウキャスト")
+                        Text("1時間降水量")
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(content == 0 ? .blue: .white)
-                            .background(content == 0 ? .white: .blue)
+                            .foregroundColor(content == 0 ? .precAnalysis: .white)
+                            .background(content == 0 ? .white: .precAnalysis)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()
@@ -47,12 +47,12 @@ extension RainCloudView {
                     Button{
                         content = 1
                     } label: {
-                        Text("雷ナウキャスト")
+                        Text("3時間降水量")
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(content == 1 ? .yellow: .white)
-                            .background(content == 1 ? .white: .yellow)
+                            .foregroundColor(content == 1 ? .precAnalysis: .white)
+                            .background(content == 1 ? .white: .precAnalysis)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()
@@ -62,12 +62,12 @@ extension RainCloudView {
                     Button{
                         content = 2
                     } label: {
-                        Text("竜巻発生確度ナウキャスト")
+                        Text("24時間降水量")
                             .padding(5)
                             .padding(.horizontal)
                             .bold()
-                            .foregroundColor(content == 2 ? .green: .white)
-                            .background(content == 2 ? .white: .green)
+                            .foregroundColor(content == 2 ? .precAnalysis: .white)
+                            .background(content == 2 ? .white: .precAnalysis)
                             .clipShape(Capsule())
                             .overlay(
                                 Capsule()

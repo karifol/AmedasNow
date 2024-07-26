@@ -120,11 +120,37 @@ extension ForecastMapView {
             Spacer()
             HStack {
                 VStack {
-                    Text(validTimeString)
-                        .font(.title2)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .padding(.top)
-                    Slider(value: $timeSliderValue, in: 0...9, step: 1)
+                    HStack{
+                        Button {
+                            if timeSliderValue > 0{
+                                timeSliderValue -= 1
+                            }
+                        } label: {
+                            Image(systemName: "lessthan")
+                                .foregroundColor(.black)
+                                .bold()
+                        }
+                        .padding(.horizontal, 20)
+                        Spacer()
+                        Text(validTimeString)
+                            .font(.title2)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.black)
+                        Spacer()
+                        Button {
+                            if timeSliderValue < 10{
+                                timeSliderValue += 1
+                            }
+                        } label: {
+                            Image(systemName: "greaterthan")
+                                .foregroundColor(.black)
+                                .bold()
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    .padding(.top)
+                    .frame(width: 350)
+                    Slider(value: $timeSliderValue, in: 0...10, step: 1)
                         .padding(.horizontal)
                         .frame(width: 300, height: 40)
                         // 変わったら表示

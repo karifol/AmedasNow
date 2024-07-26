@@ -1,22 +1,24 @@
 import SwiftUI
 
-@Observable class ThunderNccData {
+@Observable class PrecAnalisys3hData {
 
-    var validTimeList: [String] = ["dummy", "dummy"] // validtimeのデータリスト
-    var baseTimeList: [String] = ["dummy", "dummy"] // basetimeのデータリスト
+    var validTimeList: [String] = ["dummy", "dummy"]
+    var baseTimeList: [String] = ["dummy", "dummy"]
+    var typeList: [String] = ["dummy", "dummy"]
     var latestTimeIndex: Int = -1
 
     // json構造
     struct Item: Codable {
         let basetime: String?
         let validtime: String?
+        let member: String?
         let elements: [String]?
     }
     // 複数要素
     typealias ResultJson = [Item]
 
     func serchRank() {
-        print("TornadoNccData.serchRank()")
+        print("PrecAnalisys3hData.serchRank()")
         Task {
             await search()
         }
@@ -24,7 +26,7 @@ import SwiftUI
 
     @MainActor
     private func search() async {
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N3.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/jmatile/data/rasrf/targetTimes.json")
         else {
             return
         }
@@ -37,29 +39,38 @@ import SwiftUI
             // データを取り出す
             validTimeList.removeAll()
             baseTimeList.removeAll()
+            typeList.removeAll()
             for item in result {
                 if let validtime = item.validtime {
                     if let elements = item.elements {
-                        if elements.contains("thns") {
+                        if elements.contains("rasrf03h") {
                             validTimeList.append(validtime)
                         }
                     }
                 }
                 if let basetime = item.basetime {
                     if let elements = item.elements {
-                        if elements.contains("thns") {
+                        if elements.contains("rasrf") {
                             baseTimeList.append(basetime)
                         }
+                        if elements.contains("rasrf03h") {
+                            if let type = item.member {
+                                typeList.append(type)
+                            }
+                        }
                     }
-                    if let elements = item.elements {
-                        if elements.contains("amds_rain10m") {
-                            latestTimeIndex += 1
+                }
+                if let validtime = item.validtime {
+                    if let basetime = item.basetime {
+                        if validtime == basetime {
+                            latestTimeIndex = latestTimeIndex + 1
                         }
                     }
                 }
             }
-            validTimeList.sort()
-            baseTimeList.sort()
+            validTimeList.reverse()
+            baseTimeList.reverse()
+            typeList.reverse()
 
         } catch(let error) {
             print("エラーが出ました")

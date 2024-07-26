@@ -1,10 +1,10 @@
-import Foundation
 import SwiftUI
 
 @Observable class TornadoNccData {
 
     var validTimeList: [String] = ["dummy", "dummy"] // validtimeのデータリスト
     var baseTimeList: [String] = ["dummy", "dummy"] // basetimeのデータリスト
+    var latestTimeIndex: Int = -1
 
     // json構造
     struct Item: Codable {
@@ -39,7 +39,6 @@ import SwiftUI
             baseTimeList.removeAll()
             for item in result {
                 if let validtime = item.validtime {
-                    // thns という文字列がelementsに含まれているか
                     if let elements = item.elements {
                         if elements.contains("trns") {
                             validTimeList.append(validtime)
@@ -52,10 +51,16 @@ import SwiftUI
                             baseTimeList.append(basetime)
                         }
                     }
+                    if let elements = item.elements {
+                        if elements.contains("amds_rain10m") {
+                            latestTimeIndex += 1
+                        }
+                    }
                 }
             }
             validTimeList.sort()
             baseTimeList.sort()
+
         } catch(let error) {
             print("エラーが出ました")
             print(error)

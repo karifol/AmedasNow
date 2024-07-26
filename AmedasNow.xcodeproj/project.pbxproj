@@ -16,8 +16,6 @@
 		C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C442C46914D001347B6 /* SatellilteData.swift */; };
 		C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E2C482C47E610001347B6 /* WeatherMapData.swift */; };
 		C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C49AF7FE2C420CF600B19399 /* SwiftSoup */; };
-		C49AF8012C4223A700B19399 /* RaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8002C4223A700B19399 /* RaderView.swift */; };
-		C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49AF8022C425CE900B19399 /* RaderModel.swift */; };
 		C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45C2C281A820084B103 /* AmedasNowApp.swift */; };
 		C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB45E2C281A820084B103 /* ContentView.swift */; };
 		C4AEB4612C281A830084B103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AEB4602C281A830084B103 /* Assets.xcassets */; };
@@ -40,6 +38,14 @@
 		C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */; };
 		C4E22E8C2C51183C007DA59E /* TornadoNccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */; };
 		C4E22E8E2C5119C2007DA59E /* TornadoNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */; };
+		C4E22E902C526CA3007DA59E /* PrecNccData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E8F2C526CA3007DA59E /* PrecNccData.swift */; };
+		C4E22E922C526D34007DA59E /* PrecNccView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E912C526D34007DA59E /* PrecNccView.swift */; };
+		C4E22E942C536936007DA59E /* PrecAnalisysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E932C536936007DA59E /* PrecAnalisysView.swift */; };
+		C4E22E962C536CF5007DA59E /* PrecAnalisys1hView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E952C536CF5007DA59E /* PrecAnalisys1hView.swift */; };
+		C4E22E982C538796007DA59E /* PrecAnalisys1hData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */; };
+		C4E22E9A2C53ACB9007DA59E /* PrecAnalisys3hView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E992C53ACB9007DA59E /* PrecAnalisys3hView.swift */; };
+		C4E22E9C2C53AE63007DA59E /* PrecAnalisys3hData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */; };
+		C4E22E9E2C53AF63007DA59E /* PrecAnalisys24hView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E9D2C53AF63007DA59E /* PrecAnalisys24hView.swift */; };
 		C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27D82C3EAB5D00F9B787 /* RankData.swift */; };
 		C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */; };
 /* End PBXBuildFile section */
@@ -53,8 +59,6 @@
 		C43E2C422C468EA5001347B6 /* SatelliteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteView.swift; sourceTree = "<group>"; };
 		C43E2C442C46914D001347B6 /* SatellilteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatellilteData.swift; sourceTree = "<group>"; };
 		C43E2C482C47E610001347B6 /* WeatherMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapData.swift; sourceTree = "<group>"; };
-		C49AF8002C4223A700B19399 /* RaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderView.swift; sourceTree = "<group>"; };
-		C49AF8022C425CE900B19399 /* RaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaderModel.swift; sourceTree = "<group>"; };
 		C4AEB4592C281A820084B103 /* AmedasNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmedasNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AEB45C2C281A820084B103 /* AmedasNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmedasNowApp.swift; sourceTree = "<group>"; };
 		C4AEB45E2C281A820084B103 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +83,14 @@
 		C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderNccData.swift; sourceTree = "<group>"; };
 		C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoNccView.swift; sourceTree = "<group>"; };
 		C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TornadoNccData.swift; sourceTree = "<group>"; };
+		C4E22E8F2C526CA3007DA59E /* PrecNccData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecNccData.swift; sourceTree = "<group>"; };
+		C4E22E912C526D34007DA59E /* PrecNccView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecNccView.swift; sourceTree = "<group>"; };
+		C4E22E932C536936007DA59E /* PrecAnalisysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisysView.swift; sourceTree = "<group>"; };
+		C4E22E952C536CF5007DA59E /* PrecAnalisys1hView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisys1hView.swift; sourceTree = "<group>"; };
+		C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisys1hData.swift; sourceTree = "<group>"; };
+		C4E22E992C53ACB9007DA59E /* PrecAnalisys3hView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisys3hView.swift; sourceTree = "<group>"; };
+		C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisys3hData.swift; sourceTree = "<group>"; };
+		C4E22E9D2C53AF63007DA59E /* PrecAnalisys24hView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecAnalisys24hView.swift; sourceTree = "<group>"; };
 		C4EB27D82C3EAB5D00F9B787 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,9 +122,13 @@
 			isa = PBXGroup;
 			children = (
 				C4C71C232C453B5200F36F52 /* MultiMapView.swift */,
-				C49AF8002C4223A700B19399 /* RaderView.swift */,
+				C4E22E912C526D34007DA59E /* PrecNccView.swift */,
 				C4E22E812C4F3EDC007DA59E /* UVView.swift */,
 				C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */,
+				C4E22E932C536936007DA59E /* PrecAnalisysView.swift */,
+				C4E22E952C536CF5007DA59E /* PrecAnalisys1hView.swift */,
+				C4E22E992C53ACB9007DA59E /* PrecAnalisys3hView.swift */,
+				C4E22E9D2C53AF63007DA59E /* PrecAnalisys24hView.swift */,
 				C4E22E872C4FCAD5007DA59E /* ThunderNccView.swift */,
 				C4E22E8B2C51183C007DA59E /* TornadoNccView.swift */,
 				C419D38F2C4B5F850096F750 /* SeaMapView.swift */,
@@ -168,7 +184,9 @@
 				C419D3952C4BFD500096F750 /* ForecastMapData.swift */,
 				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
-				C49AF8022C425CE900B19399 /* RaderModel.swift */,
+				C4E22E8F2C526CA3007DA59E /* PrecNccData.swift */,
+				C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */,
+				C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */,
 				C4E22E832C4F413F007DA59E /* UVData.swift */,
 				C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */,
 				C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */,
@@ -270,11 +288,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C419D3942C4BFA020096F750 /* WeatherMapView.swift in Sources */,
+				C4E22E902C526CA3007DA59E /* PrecNccData.swift in Sources */,
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
 				C4E22E842C4F413F007DA59E /* UVData.swift in Sources */,
 				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
+				C4E22E9E2C53AF63007DA59E /* PrecAnalisys24hView.swift in Sources */,
 				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
 				C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */,
+				C4E22E962C536CF5007DA59E /* PrecAnalisys1hView.swift in Sources */,
 				C419D3922C4B66D60096F750 /* SeaMapData.swift in Sources */,
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
 				C419D3962C4BFD500096F750 /* ForecastMapData.swift in Sources */,
@@ -282,18 +303,21 @@
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
+				C4E22E9C2C53AE63007DA59E /* PrecAnalisys3hData.swift in Sources */,
 				C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */,
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
 				C4AEB47C2C302EEA0084B103 /* WindChartView.swift in Sources */,
 				C4AEB4702C2990410084B103 /* AmedasTableData.swift in Sources */,
+				C4E22E9A2C53ACB9007DA59E /* PrecAnalisys3hView.swift in Sources */,
+				C4E22E922C526D34007DA59E /* PrecNccView.swift in Sources */,
 				C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */,
+				C4E22E942C536936007DA59E /* PrecAnalisysView.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */,
 				C4E22E8E2C5119C2007DA59E /* TornadoNccData.swift in Sources */,
 				C419D38C2C4B59190096F750 /* ForecastMapView.swift in Sources */,
-				C49AF8032C425CE900B19399 /* RaderModel.swift in Sources */,
-				C49AF8012C4223A700B19399 /* RaderView.swift in Sources */,
 				C4E22E882C4FCAD5007DA59E /* ThunderNccView.swift in Sources */,
+				C4E22E982C538796007DA59E /* PrecAnalisys1hData.swift in Sources */,
 				C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */,
 				C43E2C452C46914D001347B6 /* SatellilteData.swift in Sources */,
 				C4AEB46E2C281C3A0084B103 /* MapView.swift in Sources */,
@@ -450,7 +474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hogehoge.amedasApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -491,7 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hogehoge.amedasApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

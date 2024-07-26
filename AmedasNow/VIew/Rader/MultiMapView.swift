@@ -21,6 +21,8 @@ struct MultiMapView: View {
                     SeaMapView()
                 case 4:
                     UVView()
+                case 5:
+                    PrecAnalisysView()
                 default:
                     SatelliteView()
                 }
@@ -39,6 +41,24 @@ struct MultiMapView: View {
                                 .bold()
                                 .foregroundColor(selectedItem == 0 ? .blue : .white)
                                 .background(selectedItem == 0 ? .white : .blue)
+                                .clipShape(Capsule())
+                                .overlay(
+                                    Capsule()
+                                        .stroke(.white, lineWidth: 2)
+                                )
+                            }
+                            .padding(3)
+                            Button {
+                                selectedItem = 5
+                            } label: {
+                                HStack {
+                                    Image(systemName: "cloud.heavyrain")
+                                    Text("解析雨量")
+                                }
+                                .padding(5)
+                                .bold()
+                                .foregroundColor(selectedItem == 5 ? .precAnalysis : .white)
+                                .background(selectedItem == 5 ? .white : .precAnalysis)
                                 .clipShape(Capsule())
                                 .overlay(
                                     Capsule()
@@ -204,6 +224,10 @@ extension MultiMapView {
         .background(.blue)
         .fontWeight(.bold)
     }
+}
+
+extension Color {
+    static var precAnalysis = Color(red: 1 / 255, green:   1 / 255,  blue: 255 / 255)
 }
 
 #Preview {
