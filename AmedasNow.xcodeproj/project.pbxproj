@@ -180,20 +180,11 @@
 			isa = PBXGroup;
 			children = (
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
-				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
-				C419D3952C4BFD500096F750 /* ForecastMapData.swift */,
-				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
-				C4E22E8F2C526CA3007DA59E /* PrecNccData.swift */,
-				C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */,
-				C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */,
-				C4E22E832C4F413F007DA59E /* UVData.swift */,
-				C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */,
-				C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */,
-				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
+				C4E22EA12C54F9BD007DA59E /* Rader */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,14 +192,31 @@
 		C4AEB46C2C281BB60084B103 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				C419D38E2C4B5F180096F750 /* Rader */,
 				C419D38D2C4B5EFA0096F750 /* Chart */,
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C419D3932C4BFA020096F750 /* WeatherMapView.swift */,
-				C419D38E2C4B5F180096F750 /* Rader */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		C4E22EA12C54F9BD007DA59E /* Rader */ = {
+			isa = PBXGroup;
+			children = (
+				C4E22E8F2C526CA3007DA59E /* PrecNccData.swift */,
+				C43E2C442C46914D001347B6 /* SatellilteData.swift */,
+				C4E22E8D2C5119C2007DA59E /* TornadoNccData.swift */,
+				C4E22E892C4FCB7D007DA59E /* ThunderNccData.swift */,
+				C4E22E832C4F413F007DA59E /* UVData.swift */,
+				C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */,
+				C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */,
+				C419D3952C4BFD500096F750 /* ForecastMapData.swift */,
+				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
+				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
+			);
+			path = Rader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

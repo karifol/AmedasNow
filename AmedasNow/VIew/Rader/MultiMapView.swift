@@ -52,7 +52,7 @@ struct MultiMapView: View {
                                 selectedItem = 5
                             } label: {
                                 HStack {
-                                    Image(systemName: "cloud.heavyrain")
+                                    Image(systemName: "cloud.heavyrain.fill")
                                     Text("解析雨量")
                                 }
                                 .padding(5)
