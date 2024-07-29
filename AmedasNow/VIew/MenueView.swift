@@ -10,6 +10,8 @@ struct MenueView: View {
                 MenueContentView
             } else if (selected == 1){
                 WeatherMapView()
+            } else if (selected == 2){
+                ForecastView()
             }
         }
         .background(.white)
@@ -58,7 +60,7 @@ extension MenueView {
                 }
                 .padding(3)
                 Button {
-                    selected = 1
+                    selected = 2
                 } label: {
                     HStack {
                         Image(systemName: "cloud.sun.rain")

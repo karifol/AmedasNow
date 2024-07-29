@@ -32,6 +32,8 @@
 		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
 		C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C71C232C453B5200F36F52 /* MultiMapView.swift */; };
 		C4D398362C56516600C3551B /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398352C56516600C3551B /* ForecastView.swift */; };
+		C4D398392C57531E00C3551B /* ForecastPointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398382C57531E00C3551B /* ForecastPointData.swift */; };
+		C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */; };
 		C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E812C4F3EDC007DA59E /* UVView.swift */; };
 		C4E22E842C4F413F007DA59E /* UVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E832C4F413F007DA59E /* UVData.swift */; };
 		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
@@ -78,6 +80,8 @@
 		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
 		C4C71C232C453B5200F36F52 /* MultiMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMapView.swift; sourceTree = "<group>"; };
 		C4D398352C56516600C3551B /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		C4D398382C57531E00C3551B /* ForecastPointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPointData.swift; sourceTree = "<group>"; };
+		C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPrefView.swift; sourceTree = "<group>"; };
 		C4E22E812C4F3EDC007DA59E /* UVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVView.swift; sourceTree = "<group>"; };
 		C4E22E832C4F413F007DA59E /* UVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVData.swift; sourceTree = "<group>"; };
 		C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCloudView.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
 				C4E22EA12C54F9BD007DA59E /* Rader */,
+				C4D398372C5752EC00C3551B /* Forecast */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,10 +204,19 @@
 				C4AEB46D2C281C3A0084B103 /* MapView.swift */,
 				C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */,
 				C4D398352C56516600C3551B /* ForecastView.swift */,
+				C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */,
 				C4AEB4812C3572160084B103 /* MenueView.swift */,
 				C419D3932C4BFA020096F750 /* WeatherMapView.swift */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		C4D398372C5752EC00C3551B /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				C4D398382C57531E00C3551B /* ForecastPointData.swift */,
+			);
+			path = Forecast;
 			sourceTree = "<group>";
 		};
 		C4E22EA12C54F9BD007DA59E /* Rader */ = {
@@ -311,6 +325,7 @@
 				C4AEB47E2C30332E0084B103 /* Prec1hChartView.swift in Sources */,
 				C419D3962C4BFD500096F750 /* ForecastMapData.swift in Sources */,
 				C4AEB45F2C281A820084B103 /* ContentView.swift in Sources */,
+				C4D398392C57531E00C3551B /* ForecastPointData.swift in Sources */,
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
@@ -322,6 +337,7 @@
 				C4E22E9A2C53ACB9007DA59E /* PrecAnalisys3hView.swift in Sources */,
 				C4E22E922C526D34007DA59E /* PrecNccView.swift in Sources */,
 				C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */,
+				C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */,
 				C4E22E942C536936007DA59E /* PrecAnalisysView.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */,
