@@ -54,7 +54,7 @@ extension MenueView {
                     .font(.title2)
                     .foregroundStyle(.white)
                     .bold()
-                    .frame(width: 300)
+                    .frame(width: 300, height: 30)
                     .padding(.vertical, 10)
                     .background(.green)
                 }
@@ -69,7 +69,7 @@ extension MenueView {
                     .font(.title2)
                     .foregroundStyle(.white)
                     .bold()
-                    .frame(width: 300)
+                    .frame(width: 300, height: 30)
                     .padding(.vertical, 10)
                     .background(.orange)
                 }

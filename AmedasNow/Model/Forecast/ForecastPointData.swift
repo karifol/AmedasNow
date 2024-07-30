@@ -5,9 +5,11 @@ import SwiftUI
     var validTimeList: [String] = ["dummy", "dummy"]
     var srf_wx_timeDifines: [String] = []
     var srf_areaName: [String] = []
-    var srf_wxCode: [[String]] = []
-    var srf_wxName: [[String]] = []
-    var srf_wxWind: [[String]] = []
+    var srf_wxCode: [String: [String: String]] = [:]
+    var srf_wxName: [String: [String: String]] = [:]
+    var srf_wxWind: [String: [String: String]] = [:]
+    var srf_tmp_timeDifines: [String] = []
+    var srf_tmpTemp: [String: [String: [String: String]]] = [:]
     
     // 複数要素
     typealias ResultJson = [Item]
@@ -67,48 +69,135 @@ import SwiftUI
             
             // Short Range Forecast
             let srf = result[0]
+            // srf weather
             let srf_wx = srf.timeSeries[0]
             // time
             for date in srf_wx.timeDefines { // 2024-07-30T00:00:00+09:00
-                srf_wx_timeDifines.append(date)
+                // 今日、明日、明後日に分類する
+                let dateStr = date.components(separatedBy: "T")[0]
+                // 日本時間の今日
+                let today = Date()
+                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+                let dayAfterTomorrow = Calendar.current.date(byAdding: .day, value: 2, to: today)!
+                let dateFormatter = DateFormatter()
+                // yyyy-MM-ddに変換
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let todayStr = dateFormatter.string(from: today)
+                let tomorrowStr = dateFormatter.string(from: tomorrow)
+                let dayAfterTomorrowStr = dateFormatter.string(from: dayAfterTomorrow)
+                // 今日、明日、明後日のみ取得
+                if dateStr == todayStr {
+                    srf_wx_timeDifines.append("今日")
+                } else if dateStr == tomorrowStr {
+                    srf_wx_timeDifines.append("明日")
+                } else if dateStr == dayAfterTomorrowStr {
+                    srf_wx_timeDifines.append("明後日")
+                }
             }
-            // area name
-            for areaData in srf_wx.areas {
-                srf_areaName.append(areaData.area.name)
+            // area
+            for idx in 0..<srf_wx.areas.count {
+                let areaData = srf_wx.areas[idx]
+                let areaName = areaData.area.name
+                // area name
+                srf_areaName.append(areaName)
                 // wx code
-                var _wxcodeList:[String] = []
                 guard let wxCodeList = areaData.weatherCodes else {
                     continue
                 }
-                for wxCode in wxCodeList {
-                    _wxcodeList.append(wxCode)
+                srf_wxCode[areaName] = [:]
+                for idx2 in 0..<wxCodeList.count {
+                    let key = srf_wx_timeDifines[idx2]
+                    srf_wxCode[areaName]?[key] = wxCodeList[idx2]
                 }
-                srf_wxCode.append(_wxcodeList)
                 // wx name
-                var _wxnameList:[String] = []
                 guard let wxNameList = areaData.weathers else {
                     continue
                 }
-                for wxName in wxNameList {
-                    _wxnameList.append(wxName)
+                srf_wxName[areaName] = [:]
+                for idx2 in 0..<wxNameList.count {
+                    let key = srf_wx_timeDifines[idx2]
+                    srf_wxName[areaName]?[key] = wxNameList[idx2]
                 }
-                srf_wxName.append(_wxnameList)
                 // wind
-                var _windList:[String] = []
-                guard let windList = areaData.winds else {
+                guard let wxWindList = areaData.winds else {
                     continue
                 }
-                for wind in windList {
-                    _windList.append(wind)
+                srf_wxWind[areaName] = [:]
+                for idx2 in 0..<wxWindList.count {
+                    let key = srf_wx_timeDifines[idx2]
+                    srf_wxWind[areaName]?[key] = wxWindList[idx2]
                 }
-                srf_wxWind.append(_windList)
             }
-            
-            print(srf_wx_timeDifines)
-            print(srf_areaName)
-            print(srf_wxCode)
-            print(srf_wxName)
-            print(srf_wxWind)
+
+            // srf tmp
+            let srf_tmp = srf.timeSeries[2]
+            // time
+            for date in srf_tmp.timeDefines { // 2024-07-30T09:00:00+09:00
+                // 今日、明日、明後日に分類する
+                // 9:00データは最高気温、0:00データは最低気温にぶんるいする
+                let dateStr = date.components(separatedBy: "T")[0]
+                // 日本時間の今日
+                let today = Date()
+                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+                let dayAfterTomorrow = Calendar.current.date(byAdding: .day, value: 2, to: today)!
+                let dateFormatter = DateFormatter()
+                // yyyy-MM-ddに変換
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let todayStr = dateFormatter.string(from: today)
+                let tomorrowStr = dateFormatter.string(from: tomorrow)
+                let dayAfterTomorrowStr = dateFormatter.string(from: dayAfterTomorrow)
+                // 今日、明日、明後日のみ取得
+                if dateStr == todayStr {
+                    let time = date.components(separatedBy: "T")[1].components(separatedBy: ":")[0]
+                    if time == "09" {
+                        srf_tmp_timeDifines.append("今日の最高気温")
+                    } else if time == "00" {
+                        srf_tmp_timeDifines.append("今日の最低気温")
+                    }
+                } else if dateStr == tomorrowStr {
+                    let time = date.components(separatedBy: "T")[1].components(separatedBy: ":")[0]
+                    if time == "09" {
+                        srf_tmp_timeDifines.append("明日の最高気温")
+                    } else if time == "00" {
+                        srf_tmp_timeDifines.append("明日の最低気温")
+                    }
+                } else if dateStr == dayAfterTomorrowStr {
+                    let time = date.components(separatedBy: "T")[1].components(separatedBy: ":")[0]
+                    if time == "09" {
+                        srf_tmp_timeDifines.append("明後日の最高気温")
+                    } else if time == "00" {
+                        srf_tmp_timeDifines.append("明後日の最低気温")
+                    }
+                }
+            }
+            // area
+            for idx in 0..<srf_wx.areas.count {
+                let areaData = srf_tmp.areas[idx]
+                let areaName = srf_wx.areas[idx].area.name
+                // temp
+                guard let tmpTempList = areaData.temps else {
+                    continue
+                }
+                srf_tmpTemp[areaName] = [:]
+                for date in srf_wx_timeDifines { // 今日
+                    srf_tmpTemp[areaName]?[date] = [:]
+                    srf_tmpTemp[areaName]?[date]?["max"] = "-"
+                    srf_tmpTemp[areaName]?[date]?["min"] = "-"
+                    // srf_tmp_timeDifinesには「今日の最高気温」などが入っているかどうか
+                    guard let idx = srf_tmp_timeDifines.firstIndex(of: "\(date)の最高気温") else {
+                        continue
+                    }
+                    let maxTemp = tmpTempList[idx]
+                    srf_tmpTemp[areaName]?[date]?["max"] = maxTemp
+                    // srf_tmp_timeDifinesには「今日の最低気温」などが入っているかどうか
+                    guard let idx = srf_tmp_timeDifines.firstIndex(of: "\(date)の最低気温") else {
+                        continue
+                    }
+                    let minTemp = tmpTempList[idx]
+                    srf_tmpTemp[areaName]?[date]?["min"] = minTemp
+                }
+
+            }
         } catch(let error) {
             print("エラーが出ました")
             print(error)

@@ -34,6 +34,8 @@
 		C4D398362C56516600C3551B /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398352C56516600C3551B /* ForecastView.swift */; };
 		C4D398392C57531E00C3551B /* ForecastPointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398382C57531E00C3551B /* ForecastPointData.swift */; };
 		C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */; };
+		C4D3983E2C584F5100C3551B /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983D2C584F5100C3551B /* SVGKit */; };
+		C4D398402C584F5100C3551B /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983F2C584F5100C3551B /* SVGKitSwift */; };
 		C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E812C4F3EDC007DA59E /* UVView.swift */; };
 		C4E22E842C4F413F007DA59E /* UVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E832C4F413F007DA59E /* UVData.swift */; };
 		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
@@ -106,6 +108,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D398402C584F5100C3551B /* SVGKitSwift in Frameworks */,
+				C4D3983E2C584F5100C3551B /* SVGKit in Frameworks */,
 				C49AF7FF2C420CF600B19399 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +189,7 @@
 		C4AEB46B2C281BAC0084B103 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
@@ -230,7 +235,6 @@
 				C4E22E972C538796007DA59E /* PrecAnalisys1hData.swift */,
 				C4E22E9B2C53AE63007DA59E /* PrecAnalisys3hData.swift */,
 				C419D3952C4BFD500096F750 /* ForecastMapData.swift */,
-				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
 				C419D3912C4B66D60096F750 /* SeaMapData.swift */,
 			);
 			path = Rader;
@@ -254,6 +258,8 @@
 			name = AmedasNow;
 			packageProductDependencies = (
 				C49AF7FE2C420CF600B19399 /* SwiftSoup */,
+				C4D3983D2C584F5100C3551B /* SVGKit */,
+				C4D3983F2C584F5100C3551B /* SVGKitSwift */,
 			);
 			productName = AmedasNow;
 			productReference = C4AEB4592C281A820084B103 /* AmedasNow.app */;
@@ -285,6 +291,7 @@
 			mainGroup = C4AEB4502C281A820084B103;
 			packageReferences = (
 				C49AF7FD2C420CF600B19399 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				C4D3983C2C584F5100C3551B /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = C4AEB45A2C281A820084B103 /* Products */;
 			projectDirPath = "";
@@ -587,6 +594,14 @@
 				minimumVersion = 2.7.2;
 			};
 		};
+		C4D3983C2C584F5100C3551B /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +609,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C49AF7FD2C420CF600B19399 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		C4D3983D2C584F5100C3551B /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D3983C2C584F5100C3551B /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		C4D3983F2C584F5100C3551B /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4D3983C2C584F5100C3551B /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
