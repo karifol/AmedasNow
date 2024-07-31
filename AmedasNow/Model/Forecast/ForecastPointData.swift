@@ -11,6 +11,14 @@ import SwiftUI
     var srf_tmp_timeDifines: [String] = []
     var srf_tmpTemp: [String: [String: [String: String]]] = [:]
     
+    var mrf_wx_timeDifines: [String] = []
+    var mrf_areaName: [String] = []
+    var mrf_wxCode: [String: [String: String]] = [:]
+    var mrf_wxPop: [String: [String: String]] = [:]
+    var mrf_wxReliability: [String: [String: String]] = [:]
+    var mrf_tmpMax: [String: [String: String]] = [:]
+    var mrf_tmpMin: [String: [String: String]] = [:]
+    
     // 複数要素
     typealias ResultJson = [Item]
     // json構造
@@ -54,7 +62,7 @@ import SwiftUI
     @MainActor
     private func searchObs(id: String) async {
         // 日ランキング
-        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/forecast/data/forecast/100000.json")
+        guard let req_url = URL(string: "https://www.jma.go.jp/bosai/forecast/data/forecast/\(id).json")
         else {
             return
         }
@@ -196,7 +204,74 @@ import SwiftUI
                     let minTemp = tmpTempList[idx]
                     srf_tmpTemp[areaName]?[date]?["min"] = minTemp
                 }
-
+            }
+            
+            // Mid Range Forecast
+            let mrf = result[1]
+            // mrf weather
+            let mrf_wx = mrf.timeSeries[0]
+            // mrf temp
+            let mrf_tmp = mrf.timeSeries[1]
+            // time
+            for date in mrf_wx.timeDefines { // 2024-07-30T00:00:00+09:00
+                // 今日、明日、明後日に分類する
+                let dateStr = date.components(separatedBy: "T")[0] // 2024-07-30
+                let dayStr = dateStr.components(separatedBy: "-")[2]
+                
+                mrf_wx_timeDifines.append(dayStr + "日")
+            }
+            // area
+            for idx in 0..<mrf_wx.areas.count {
+                let areaData = mrf_wx.areas[idx]
+                let areaTempData = mrf_tmp.areas[idx]
+                let areaName = areaData.area.name
+                // area name
+                mrf_areaName.append(areaName)
+                // wx code
+                guard let wxCodeList = areaData.weatherCodes else {
+                    continue
+                }
+                mrf_wxCode[areaName] = [:]
+                for idx2 in 0..<wxCodeList.count {
+                    let key = mrf_wx_timeDifines[idx2]
+                    mrf_wxCode[areaName]?[key] = wxCodeList[idx2]
+                }
+                // pop
+                guard let wxPopList = areaData.pops else {
+                    continue
+                }
+                mrf_wxPop[areaName] = [:]
+                for idx2 in 0..<wxCodeList.count {
+                    let key = mrf_wx_timeDifines[idx2]
+                    mrf_wxPop[areaName]?[key] = wxPopList[idx2] == "" ? "-" : wxPopList[idx2] + "%"
+                }
+                // rel
+                guard let wxRelList = areaData.reliabilities else {
+                    continue
+                }
+                mrf_wxReliability[areaName] = [:]
+                for idx2 in 0..<wxRelList.count {
+                    let key = mrf_wx_timeDifines[idx2]
+                    mrf_wxReliability[areaName]?[key] = wxRelList[idx2] == "" ? "-" : wxRelList[idx2]
+                }
+                // max temp
+                guard let tmpMaxList = areaTempData.tempsMax else {
+                    continue
+                }
+                mrf_tmpMax[areaName] = [:]
+                for idx2 in 0..<tmpMaxList.count {
+                    let key = mrf_wx_timeDifines[idx2]
+                    mrf_tmpMax[areaName]?[key] = tmpMaxList[idx2] == "" ? "-" : tmpMaxList[idx2] + "℃"
+                }
+                // min temp
+                guard let tmpMinList = areaTempData.tempsMin else {
+                    continue
+                }
+                mrf_tmpMin[areaName] = [:]
+                for idx2 in 0..<tmpMinList.count {
+                    let key = mrf_wx_timeDifines[idx2]
+                    mrf_tmpMin[areaName]?[key] = tmpMinList[idx2] == "" ? "-" : tmpMinList[idx2] + "℃"
+                }
             }
         } catch(let error) {
             print("エラーが出ました")

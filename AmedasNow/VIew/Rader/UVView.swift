@@ -131,7 +131,6 @@ extension UVView {
                     Slider(value: $timeSliderValue, in: 0...12, step: 1)
                         .padding(.horizontal)
                         .frame(width: 300, height: 40)
-//                         変わったら表示
                         .onChange(of: timeSliderValue) { oldState, newState in
                             let time = Int(newState)
                             baseTime = uvData.basetime
