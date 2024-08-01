@@ -37,6 +37,7 @@
 		C4D3983E2C584F5100C3551B /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983D2C584F5100C3551B /* SVGKit */; };
 		C4D398402C584F5100C3551B /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983F2C584F5100C3551B /* SVGKitSwift */; };
 		C4D398452C58FED900C3551B /* ForecastOverviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398442C58FED900C3551B /* ForecastOverviewData.swift */; };
+		C4D398472C5A5FE800C3551B /* ForecastJapanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */; };
 		C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E812C4F3EDC007DA59E /* UVView.swift */; };
 		C4E22E842C4F413F007DA59E /* UVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E832C4F413F007DA59E /* UVData.swift */; };
 		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
@@ -86,6 +87,7 @@
 		C4D398382C57531E00C3551B /* ForecastPointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPointData.swift; sourceTree = "<group>"; };
 		C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPrefView.swift; sourceTree = "<group>"; };
 		C4D398442C58FED900C3551B /* ForecastOverviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastOverviewData.swift; sourceTree = "<group>"; };
+		C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastJapanView.swift; sourceTree = "<group>"; };
 		C4E22E812C4F3EDC007DA59E /* UVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVView.swift; sourceTree = "<group>"; };
 		C4E22E832C4F413F007DA59E /* UVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVData.swift; sourceTree = "<group>"; };
 		C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCloudView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */,
 				C4D398352C56516600C3551B /* ForecastView.swift */,
+				C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */,
 			);
 			path = Forecast;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				C4E22E8C2C51183C007DA59E /* TornadoNccView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
 				C4AEB4742C2EF2740084B103 /* AmedasMapData.swift in Sources */,
+				C4D398472C5A5FE800C3551B /* ForecastJapanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
