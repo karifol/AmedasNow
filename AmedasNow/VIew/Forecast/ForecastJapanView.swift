@@ -11,8 +11,8 @@ struct ForecastJapanView: View {
             HeaderView
             Map(position: $cameraPosition){
                 let targetCoordinate = CLLocationCoordinate2D(
-                    latitude: 36.69,
-                    longitude: 138.93
+                    latitude: 36.88,
+                    longitude: 139.8
                 )
                 Annotation("東京", coordinate: targetCoordinate, anchor: .center) {
                     Button{
