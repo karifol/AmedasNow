@@ -31,14 +31,16 @@
 		C4AEB4802C3104B20084B103 /* PointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB47F2C3104B20084B103 /* PointData.swift */; };
 		C4AEB4822C3572160084B103 /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AEB4812C3572160084B103 /* MenueView.swift */; };
 		C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C71C232C453B5200F36F52 /* MultiMapView.swift */; };
-		C4CA3C872C5DAC7B0047EF8D /* ForecastJapanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA3C862C5DAC7B0047EF8D /* ForecastJapanData.swift */; };
+		C4CA3C962C5F37F00047EF8D /* FcstMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA3C952C5F37F00047EF8D /* FcstMapView.swift */; };
+		C4CA3C982C5F38CD0047EF8D /* FcstMapFcstData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA3C972C5F38CD0047EF8D /* FcstMapFcstData.swift */; };
+		C4CA3C9A2C5F38E30047EF8D /* FcstMapPlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA3C992C5F38E30047EF8D /* FcstMapPlaceData.swift */; };
+		C4CA3C9C2C5F84310047EF8D /* forecast_japan.json in Resources */ = {isa = PBXBuildFile; fileRef = C4CA3C9B2C5F84310047EF8D /* forecast_japan.json */; };
 		C4D398362C56516600C3551B /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398352C56516600C3551B /* ForecastView.swift */; };
 		C4D398392C57531E00C3551B /* ForecastPointData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398382C57531E00C3551B /* ForecastPointData.swift */; };
 		C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */; };
 		C4D3983E2C584F5100C3551B /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983D2C584F5100C3551B /* SVGKit */; };
 		C4D398402C584F5100C3551B /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C4D3983F2C584F5100C3551B /* SVGKitSwift */; };
 		C4D398452C58FED900C3551B /* ForecastOverviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398442C58FED900C3551B /* ForecastOverviewData.swift */; };
-		C4D398472C5A5FE800C3551B /* ForecastJapanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */; };
 		C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E812C4F3EDC007DA59E /* UVView.swift */; };
 		C4E22E842C4F413F007DA59E /* UVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E832C4F413F007DA59E /* UVData.swift */; };
 		C4E22E862C4FC5A2007DA59E /* RainCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */; };
@@ -84,12 +86,14 @@
 		C4AEB47F2C3104B20084B103 /* PointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointData.swift; sourceTree = "<group>"; };
 		C4AEB4812C3572160084B103 /* MenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenueView.swift; sourceTree = "<group>"; };
 		C4C71C232C453B5200F36F52 /* MultiMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMapView.swift; sourceTree = "<group>"; };
-		C4CA3C862C5DAC7B0047EF8D /* ForecastJapanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastJapanData.swift; sourceTree = "<group>"; };
+		C4CA3C952C5F37F00047EF8D /* FcstMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcstMapView.swift; sourceTree = "<group>"; };
+		C4CA3C972C5F38CD0047EF8D /* FcstMapFcstData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcstMapFcstData.swift; sourceTree = "<group>"; };
+		C4CA3C992C5F38E30047EF8D /* FcstMapPlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FcstMapPlaceData.swift; sourceTree = "<group>"; };
+		C4CA3C9B2C5F84310047EF8D /* forecast_japan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forecast_japan.json; sourceTree = "<group>"; };
 		C4D398352C56516600C3551B /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		C4D398382C57531E00C3551B /* ForecastPointData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPointData.swift; sourceTree = "<group>"; };
 		C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPrefView.swift; sourceTree = "<group>"; };
 		C4D398442C58FED900C3551B /* ForecastOverviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastOverviewData.swift; sourceTree = "<group>"; };
-		C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastJapanView.swift; sourceTree = "<group>"; };
 		C4E22E812C4F3EDC007DA59E /* UVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVView.swift; sourceTree = "<group>"; };
 		C4E22E832C4F413F007DA59E /* UVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVData.swift; sourceTree = "<group>"; };
 		C4E22E852C4FC5A2007DA59E /* RainCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCloudView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
 				C4AEB4712C2C2C0A0084B103 /* LatestTimeData.swift */,
 				C4AEB47F2C3104B20084B103 /* PointData.swift */,
+				C4CA3C882C5F0D2A0047EF8D /* Data */,
 				C4E22EA12C54F9BD007DA59E /* Rader */,
 				C4D398372C5752EC00C3551B /* Forecast */,
 			);
@@ -221,12 +226,21 @@
 			path = VIew;
 			sourceTree = "<group>";
 		};
+		C4CA3C882C5F0D2A0047EF8D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C4CA3C9B2C5F84310047EF8D /* forecast_japan.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		C4D398372C5752EC00C3551B /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
 				C4D398382C57531E00C3551B /* ForecastPointData.swift */,
-				C4CA3C862C5DAC7B0047EF8D /* ForecastJapanData.swift */,
 				C4D398442C58FED900C3551B /* ForecastOverviewData.swift */,
+				C4CA3C972C5F38CD0047EF8D /* FcstMapFcstData.swift */,
+				C4CA3C992C5F38E30047EF8D /* FcstMapPlaceData.swift */,
 			);
 			path = Forecast;
 			sourceTree = "<group>";
@@ -236,7 +250,7 @@
 			children = (
 				C4D3983A2C575E9900C3551B /* ForecastPrefView.swift */,
 				C4D398352C56516600C3551B /* ForecastView.swift */,
-				C4D398462C5A5FE800C3551B /* ForecastJapanView.swift */,
+				C4CA3C952C5F37F00047EF8D /* FcstMapView.swift */,
 			);
 			path = Forecast;
 			sourceTree = "<group>";
@@ -326,6 +340,7 @@
 			files = (
 				C4AEB4652C281A830084B103 /* Preview Assets.xcassets in Resources */,
 				C4AEB4612C281A830084B103 /* Assets.xcassets in Resources */,
+				C4CA3C9C2C5F84310047EF8D /* forecast_japan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,11 +352,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C419D3942C4BFA020096F750 /* WeatherMapView.swift in Sources */,
-				C4CA3C872C5DAC7B0047EF8D /* ForecastJapanData.swift in Sources */,
 				C4E22E902C526CA3007DA59E /* PrecNccData.swift in Sources */,
 				C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */,
 				C4E22E842C4F413F007DA59E /* UVData.swift in Sources */,
 				C4C71C242C453B5200F36F52 /* MultiMapView.swift in Sources */,
+				C4CA3C962C5F37F00047EF8D /* FcstMapView.swift in Sources */,
 				C4E22E9E2C53AF63007DA59E /* PrecAnalisys24hView.swift in Sources */,
 				C43E2C432C468EA5001347B6 /* SatelliteView.swift in Sources */,
 				C43E2C492C47E610001347B6 /* WeatherMapData.swift in Sources */,
@@ -355,6 +370,7 @@
 				C4EB27D92C3EAB5D00F9B787 /* RankData.swift in Sources */,
 				C4AEB4722C2C2C0A0084B103 /* LatestTimeData.swift in Sources */,
 				C4AEB4762C3017A10084B103 /* GraphView.swift in Sources */,
+				C4CA3C9A2C5F38E30047EF8D /* FcstMapPlaceData.swift in Sources */,
 				C4E22E9C2C53AE63007DA59E /* PrecAnalisys3hData.swift in Sources */,
 				C4E22E8A2C4FCB7D007DA59E /* ThunderNccData.swift in Sources */,
 				C4AEB4802C3104B20084B103 /* PointData.swift in Sources */,
@@ -363,6 +379,7 @@
 				C4E22E9A2C53ACB9007DA59E /* PrecAnalisys3hView.swift in Sources */,
 				C4E22E922C526D34007DA59E /* PrecNccView.swift in Sources */,
 				C4E22E822C4F3EDC007DA59E /* UVView.swift in Sources */,
+				C4CA3C982C5F38CD0047EF8D /* FcstMapFcstData.swift in Sources */,
 				C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */,
 				C4E22E942C536936007DA59E /* PrecAnalisysView.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
@@ -379,7 +396,6 @@
 				C4E22E8C2C51183C007DA59E /* TornadoNccView.swift in Sources */,
 				C4AEB45D2C281A820084B103 /* AmedasNowApp.swift in Sources */,
 				C4AEB4742C2EF2740084B103 /* AmedasMapData.swift in Sources */,
-				C4D398472C5A5FE800C3551B /* ForecastJapanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

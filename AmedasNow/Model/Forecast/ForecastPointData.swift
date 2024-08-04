@@ -58,10 +58,8 @@ import SwiftUI
         }
     }
 
-    // 高解像度ナウキャストの観測データ
     @MainActor
     private func searchObs(id: String) async {
-        // 日ランキング
         guard let req_url = URL(string: "https://www.jma.go.jp/bosai/forecast/data/forecast/\(id).json")
         else {
             return

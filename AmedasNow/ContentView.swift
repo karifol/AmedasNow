@@ -16,7 +16,7 @@ struct ContentView: View {
             MapView()
                 .tabItem {
                     Image(systemName: "map")
-                    Text("マップ")
+                    Text("アメダス")
                 }
                 .tag(1)
             MultiMapView()
@@ -25,16 +25,16 @@ struct ContentView: View {
                     Text("レーダー")
                 }
                 .tag(2)
+            FcstMapView()
+                .tabItem {
+                    Image(systemName: "cloud.sun.fill")
+                    Text("天気予報")
+                }
+                .tag(3)
             RankView()
                 .tabItem {
                     Image(systemName: "list.number")
                     Text("ランキング")
-                }
-                .tag(3)
-            GraphView()
-                .tabItem {
-                    Image(systemName: "chart.xyaxis.line")
-                    Text("グラフ")
                 }
                 .tag(4)
         }

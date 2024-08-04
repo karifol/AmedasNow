@@ -219,8 +219,6 @@ extension ForecastView {
                 MenueButton(prefId: $prefId, prefName: $prefName, imageName: "okinawa", title: "宮古島", id: "473000")
                 MenueButton(prefId: $prefId, prefName: $prefName, imageName: "okinawa", title: "八重山", id: "474000")
             }
-
-
         }
     }
     

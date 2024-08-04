@@ -25,7 +25,6 @@ struct ForecastPrefView: View {
         .onAppear(){
             fpd.serch(id: id)
             fod.serch(id: id)
-            print(id)
         }
     }
 }
