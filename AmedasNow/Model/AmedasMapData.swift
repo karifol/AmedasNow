@@ -10,6 +10,7 @@ struct AmedasMapItem: Identifiable{
     let lon: Double
     let name: String
     let type: String
+    let amsid: String
 }
 
 @Observable class AmedasMapData {
@@ -100,7 +101,8 @@ struct AmedasMapItem: Identifiable{
                         lat: amedasTableData.amedasDict[key]?.lat ?? 0,
                         lon: amedasTableData.amedasDict[key]?.lon ?? 0,
                         name: amedasTableData.amedasDict[key]?.name ?? "",
-                        type:amedasTableData.amedasDict[key]?.type ?? "A"
+                        type:amedasTableData.amedasDict[key]?.type ?? "A",
+                        amsid: key
                     )
                     amedasList.append(amedasItem)
                 }

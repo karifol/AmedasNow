@@ -3,62 +3,20 @@ import MapKit
 
 struct GraphView: View {
 
-    // アメダスデータ
-    var pointData = PointData()
-
-    // アメダス地点データ
-    var amedasTableData = AmedasTableData()
-
-    var latestTimeData = LatestTimeData()
+//    // アメダスデータ
+//    var pointData = PointData()
+    let dataList: [PointItem]
 
     @State var selectedName = "東京"
 
-    @State private var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 35.711, longitude: 139.866),
-        span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-    ))
-
     var body: some View {
         VStack (alignment: .leading, spacing: 0){
-            HeaderView
-            Map(position: $cameraPosition){
-                ForEach(Array(amedasTableData.amedasDict.values), id: \.id) { amedas in
-                    let targetCoordinate = CLLocationCoordinate2D(latitude: amedas.lat, longitude: amedas.lon)
-                    Annotation("", coordinate: targetCoordinate, anchor: .center) {
-                        VStack{
-                            Text(amedas.name)
-                                .padding(5)
-                                .foregroundStyle(amedas.type == "A" ? Color.white : Color.black)
-                                .bold()
-                        }
-                        .background(amedas.type == "A" ? Color.pink : Color.white)
-                        .border(amedas.name == selectedName ? Color.blue : Color.black, width: amedas.name == selectedName ? 4 : 2)
-                        .scaleEffect(amedas.name == selectedName ? 1.5 : 1)
-                        .onTapGesture {
-                            selectedName = amedas.name
-                            pointData.changePoint(
-                                amsid: amedas.amsid
-                            )
-                        }
-                    }
-
-                }
-            }
-                .frame(height: 300)
-                .padding()
-                .onAppear(){
-                    pointData.serchAmedas(
-                        amsid: "44132"
-                    )
-                }
-
-            PlaceNameView(text: selectedName)
             ScrollView {
                 // グラフ
                 VStack(alignment: .leading) {
                     TempTitleView()
                     TempChartView(
-                        dataList: pointData.dataList
+                        dataList: dataList
                     )
                         .frame(height: 200)
                 }
@@ -66,7 +24,7 @@ struct GraphView: View {
                 VStack(alignment: .leading) {
                     WindTitleView()
                     WindChartView(
-                        dataList: pointData.dataList
+                        dataList: dataList
                     )
                         .frame(height: 200)
                 }
@@ -74,37 +32,18 @@ struct GraphView: View {
                 VStack(alignment: .leading) {
                     Prec1hTitleView()
                     Prec1hChartView(
-                        dataList: pointData.dataList
+                        dataList: dataList
                     )
                         .frame(height: 200)
                 }
                 .padding(.horizontal, 20)
             }
         }
-        .onAppear(){
-            amedasTableData.serchAmedasTable()
-            pointData.serchAmedas(
-                amsid: "44132"
-            )
-        }
     }
 }
 
 extension GraphView {
 
-    // 地点名
-    struct PlaceNameView: View {
-        let text: String
-        var body: some View {
-            HStack{
-                Spacer()
-                Text(text)
-                    .font(.title2)
-                    .bold()
-                Spacer()
-            }
-        }
-    }
     // 気温グラフタイトル
     struct TempTitleView: View {
         var body: some View {
@@ -150,21 +89,4 @@ extension GraphView {
             .padding(.horizontal, 20)
         }
     }
-
-    // header
-    private var HeaderView: some View {
-        HStack {
-            Image(systemName: "chart.xyaxis.line")
-            Text("グラフ")
-        }
-        .foregroundStyle(.white)
-        .font(.title2)
-        .frame(maxWidth: .infinity)
-        .background(.blue)
-        .fontWeight(.bold)
-    }
-}
-
-#Preview {
-    ContentView()
 }

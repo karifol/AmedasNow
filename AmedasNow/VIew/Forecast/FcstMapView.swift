@@ -65,10 +65,11 @@ struct FcstMapView: View {
             fmfd.serchAsync()
             fmfd_class10_wxDict = fmfd.class10_wxDict
         }
-        .onChange(of: fmfd.class10_wxDict){
+        .onChange(of: fmfd.all_vtList){
             fmfd_class10_wxDict = fmfd.class10_wxDict
+            validDate = fmfd.all_vtList[0]
         }
-        .onChange(of: fmfd.office_wxDict){
+        .onChange(of: fmpd.idList){
             fmfd_office_wxDict = fmfd.office_wxDict
         }
     }

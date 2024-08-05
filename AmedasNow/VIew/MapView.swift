@@ -8,6 +8,9 @@ struct MapView: View {
     var amedasMapDataList = AmedasMapData(
         amedasTableData: AmedasTableData()
     )
+    
+    // アメダスデータ
+    @State private var pointData = PointData() 
 
     // タップされた地点
     @State private var selectedAmedas: AmedasMapItem?
@@ -46,13 +49,6 @@ struct MapView: View {
             print("Tracking not available on this iOS version")
         }
     }
-
-//    init(){
-//        latestTimeData.get()
-//        amedasMapDataList.serchAmedas(
-//            basetime: "999"
-//        )
-//    }
 
     // 要素のpicker
     @State private var selectedElement = "temp"
@@ -97,6 +93,9 @@ struct MapView: View {
         }
         .onAppear(){
             requestTrackingPermission()
+            pointData.serchAmedas(
+                amsid: "44132"
+            )
         }
     }
 }
@@ -115,6 +114,7 @@ extension MapView {
                         // 矢印
                         Button(){
                             selectedAmedas = amedas
+                            pointData.serchAmedas(amsid: amedas.amsid)
                         } label: {
                             Image(systemName: "arrow.up")
                                 .resizable()
@@ -133,6 +133,7 @@ extension MapView {
                     } else if selectedElement == "temp" {
                         Button(){
                             selectedAmedas = amedas
+                            pointData.serchAmedas(amsid: amedas.amsid)
                         } label: {
                             Circle()
                                 .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
@@ -146,6 +147,7 @@ extension MapView {
                     } else if selectedElement == "prec1h" {
                         Button(){
                             selectedAmedas = amedas
+                            pointData.serchAmedas(amsid: amedas.amsid)
                         } label: {
                             Circle()
                                 .fill(getCircleColor(temp: amedas.temp, prec1h: amedas.prec1h, wind: amedas.wind, element: selectedElement))
@@ -161,7 +163,7 @@ extension MapView {
         }
         .mapStyle(.imagery(elevation: .realistic))
         .sheet(item: $selectedAmedas) { item in
-            SheetView(item: item)
+            SheetView(pointData: $pointData, item: item)
         }
     }
 
@@ -420,6 +422,7 @@ extension MapView {
     
      // sheet
     struct SheetView: View {
+        @Binding var pointData: PointData
         var item: AmedasMapItem
         var body: some View {
            VStack{
@@ -473,18 +476,8 @@ extension MapView {
                         }
                     }
                 }
+               GraphView(dataList: pointData.dataList)
             }
-            .frame(width: 300, height: 400)
-            .background(Color.white)
-            .cornerRadius(20)
-            .presentationDetents([
-                .medium,
-                .large,
-                // 高さ
-                .height(200),
-                // 画面に対する割合
-                .fraction(0.8)
-            ])
         }
     }
 }
