@@ -6,7 +6,7 @@ struct FcstMapView: View {
     let fmpd = FcstMapPlaceData()
     let fmfd = FcstMapFcstData()
     
-    @State private var validDate = "4日"
+    @State private var validDate = ""
     
     @State private var selectedId = ""
     @State private var selectedName = ""
@@ -63,14 +63,11 @@ struct FcstMapView: View {
         .onAppear(){
             fmpd.serchAsync()
             fmfd.serchAsync()
-            fmfd_class10_wxDict = fmfd.class10_wxDict
         }
         .onChange(of: fmfd.all_vtList){
             fmfd_class10_wxDict = fmfd.class10_wxDict
-            validDate = fmfd.all_vtList[0]
-        }
-        .onChange(of: fmpd.idList){
             fmfd_office_wxDict = fmfd.office_wxDict
+            validDate = fmfd.all_vtList[0]
         }
     }
 }

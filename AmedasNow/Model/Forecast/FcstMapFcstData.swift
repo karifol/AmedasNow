@@ -60,6 +60,7 @@ import SwiftUI
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 let date = formatter.date(from: date)
                 let outputFormatter = DateFormatter()
+                // 日にちと曜日を取得
                 outputFormatter.dateFormat = "d日"
                 let outputDate = outputFormatter.string(from: date!)
                 class10_vtList.append(outputDate)
