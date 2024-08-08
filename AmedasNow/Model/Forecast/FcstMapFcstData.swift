@@ -130,7 +130,7 @@ import SwiftUI
         } catch(let error) {
             print("エラーが出ました")
             print(error)
-        } 
+        }
     }
 }
 
