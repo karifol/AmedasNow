@@ -131,6 +131,7 @@ import SwiftUI
             print("エラーが出ました")
             print(error)
         }
-    }　
+    }
+
 }
 
