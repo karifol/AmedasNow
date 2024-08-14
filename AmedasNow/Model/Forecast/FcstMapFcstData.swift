@@ -125,7 +125,7 @@ import SwiftUI
             for date in _all_vtList { // 804
                 let day = date % 100
                 all_vtList.append(String(day) + "日")
-            }
+            } 
         } catch(let error) {
             print("エラーが出ました")
             print(error)
