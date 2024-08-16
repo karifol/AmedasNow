@@ -3,7 +3,7 @@ import AppTrackingTransparency
 
 struct ContentView: View {
 
-    @State var selection: Int = 2
+    @State var selection: Int = 4
 
     var body: some View {
         TabView(selection: $selection) {
@@ -31,10 +31,10 @@ struct ContentView: View {
                     Text("天気予報")
                 }
                 .tag(3)
-            RankView()
+            ModelView()
                 .tabItem {
-                    Image(systemName: "list.number")
-                    Text("ランキング")
+                    Image(systemName: "tropicalstorm")
+                    Text("気象モデル")
                 }
                 .tag(4)
         }

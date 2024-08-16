@@ -12,6 +12,8 @@ struct MenueView: View {
                 WeatherMapView()
             } else if (selected == 2){
                 ForecastView()
+            } else if (selected == 3){
+                RankView()
             }
         }
         .background(.white)
@@ -72,6 +74,21 @@ extension MenueView {
                     .frame(width: 300, height: 30)
                     .padding(.vertical, 10)
                     .background(.orange)
+                }
+                .padding(3)
+                Button {
+                    selected = 3
+                } label: {
+                    HStack {
+                        Image(systemName: "list.number")
+                        Text("AMeDASランキング")
+                    }
+                    .font(.title2)
+                    .foregroundStyle(.white)
+                    .bold()
+                    .frame(width: 300, height: 30)
+                    .padding(.vertical, 10)
+                    .background(.blue)
                 }
                 .padding(3)
                 SourceView
