@@ -60,6 +60,7 @@
 		C4EB27DD2C3FFC2C00F9B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */; };
 		C4EF7B832C6F147B00879520 /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF7B822C6F147B00879520 /* ModelView.swift */; };
 		C4EF7B852C6F29CD00879520 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF7B842C6F29CD00879520 /* ModelData.swift */; };
+		C4EF7B872C6F62D000879520 /* AmedasListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF7B862C6F62D000879520 /* AmedasListData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 		C4EB27DC2C3FFC2C00F9B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		C4EF7B822C6F147B00879520 /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		C4EF7B842C6F29CD00879520 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		C4EF7B862C6F62D000879520 /* AmedasListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmedasListData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				C43E2C482C47E610001347B6 /* WeatherMapData.swift */,
 				C4AEB46F2C2990410084B103 /* AmedasTableData.swift */,
+				C4EF7B862C6F62D000879520 /* AmedasListData.swift */,
 				C4EB27D82C3EAB5D00F9B787 /* RankData.swift */,
 				C4EF7B842C6F29CD00879520 /* ModelData.swift */,
 				C4AEB4732C2EF2740084B103 /* AmedasMapData.swift */,
@@ -389,6 +392,7 @@
 				C4CA3C982C5F38CD0047EF8D /* FcstMapFcstData.swift in Sources */,
 				C4D3983B2C575E9900C3551B /* ForecastPrefView.swift in Sources */,
 				C4E22E942C536936007DA59E /* PrecAnalisysView.swift in Sources */,
+				C4EF7B872C6F62D000879520 /* AmedasListData.swift in Sources */,
 				C4AEB4822C3572160084B103 /* MenueView.swift in Sources */,
 				C419D3902C4B5F850096F750 /* SeaMapView.swift in Sources */,
 				C4E22E8E2C5119C2007DA59E /* TornadoNccData.swift in Sources */,

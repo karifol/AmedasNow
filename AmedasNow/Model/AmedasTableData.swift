@@ -22,12 +22,10 @@ struct AmedasTableItem: Identifiable{
         let knName: String?
         let enName: String?
     }
-    // 複数要素
     typealias ResultJson = [String: Item]
 
     var amedasDict: [String: AmedasTableItem] = [:]
 
-    // Web API検索用メソッド
     func serchAmedasTable() {
         print("AmedasTableData.serchAmedasTable()")
         Task {
@@ -35,26 +33,20 @@ struct AmedasTableItem: Identifiable{
         }
     }
 
-    // @MainActorを使いメインスレッドで更新する
     @MainActor
     private func search() async {
 
-        // リクエストURLの組み立て
         guard let req_url = URL(string: "https://www.jma.go.jp/bosai/amedas/const/amedastable.json")
         else {
             return
         }
         do {
-            // リクエストURLからダウンロード
             let (data, _) = try await URLSession.shared.data(from: req_url)
-
-            // 受け取ったJSONデータをパースして格納
             let decoder = JSONDecoder()
             let result = try decoder.decode(ResultJson.self, from: data)
 
             amedasDict = [:]
 
-            // 取得しているお菓子を構造体でまとめて管理
             for (key, item) in result {
                 if let lat = item.lat,
                 let lon = item.lon,
